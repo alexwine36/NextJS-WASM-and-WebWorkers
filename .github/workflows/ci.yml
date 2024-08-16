@@ -1,4 +1,8 @@
 name: 'Pipeline'
+
+permissions:
+  pull-requests: write
+
 on:
   push:
     branches:
