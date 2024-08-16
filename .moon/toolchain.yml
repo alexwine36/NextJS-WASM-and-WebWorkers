@@ -60,4 +60,5 @@ rust:
   syncToolchainConfig: true
 
   # List of rustup toolchain targets to install and make available.
-  targets: []
+  targets: 
+    - wasm32-unknown-unknown
