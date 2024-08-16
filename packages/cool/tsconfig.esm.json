@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.options.json",
+  "compilerOptions": {
+    "outDir": "esm",
+    "rootDir": "src"
+  },
+  "include": [
+    "src/**/*",
+    "types/**/*",
+    "../../types/**/*"
+  ]
+}

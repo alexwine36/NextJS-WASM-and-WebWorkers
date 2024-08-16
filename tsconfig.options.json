@@ -1,0 +1,16 @@
+// https://www.npmjs.com/package/tsconfig-moon
+{
+  "extends": "tsconfig-moon/tsconfig.projects.json",
+  // Uncomment if using React
+  // "compilerOptions": {
+  //   "lib": ["dom"],
+  //   "jsx": "react"
+  // }
+  // Uncomment if using Solid
+  // "compilerOptions": {
+  //   "lib": ["dom"],
+  //   "jsx": "preserve",
+  //   "jsxImportSource": "solid-js"
+  // }
+  // "include": ["./eslint.config.mjs"]
+}
