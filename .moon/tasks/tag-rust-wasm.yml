@@ -22,7 +22,7 @@ tasks:
     env: *env
     options:
       runInCI: false
-      
+
   test-node:
     command: "wasm-pack test --node"
     inputs:
@@ -35,12 +35,20 @@ tasks:
       runInCI: false
 
   test:
-    command: "noop"
-    deps:
-      - "~:test-web"
-      - "~:test-node"
-    options:
-      runDepsInParallel: false
+    command: 'nextest run'
+    inputs:
+      - '@group(cargo)'
+      - '@group(sources)'
+      - '@group(tests)'
+      - '/.config/nextest.*'
+    env: *env
+  # test:
+  #   command: "noop"
+  #   deps:
+  #     - "~:test-web"
+  #     - "~:test-node"
+  #   options:
+  #     runDepsInParallel: false
     
 # implicitInputs:
 #   - 'Cargo.toml'
