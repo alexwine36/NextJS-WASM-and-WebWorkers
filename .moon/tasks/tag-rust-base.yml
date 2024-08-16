@@ -19,19 +19,8 @@ tasks:
   cargo:
     command: 'cargo'
     local: true
-
-  build: &build
-    command: 'cargo build'
-    inputs:
-      - '@group(cargo)'
-      - '@group(sources)'
     env: &env
       CARGO_TERM_COLOR: 'always'
-
-  build-release:
-    <<: *build
-    command: 'cargo build --release'
-    local: true
 
   check:
     command: 'cargo check --workspace --all-targets'
@@ -39,14 +28,6 @@ tasks:
       - '@group(cargo)'
       - '@group(sources)'
       - '@group(tests)'
-    env: *env
-
-  dev:
-    command: 'cargo run'
-    inputs:
-      - '@group(cargo)'
-      - '@group(sources)'
-    local: true
     env: *env
 
   format: &format
@@ -76,12 +57,3 @@ tasks:
     <<: *lint
     command: 'cargo clippy --workspace --all-targets --fix --allow-dirty --allow-staged'
     local: true
-
-  test:
-    command: 'cargo nextest run --workspace'
-    inputs:
-      - '@group(cargo)'
-      - '@group(sources)'
-      - '@group(tests)'
-      - '/.config/nextest.*'
-    env: *env

@@ -1,0 +1,10 @@
+title: 'rust-package'
+description: |
+  A simple rust package 
+
+variables:
+  name:
+    type: 'string'
+    default: ''
+    required: true
+    prompt: 'Package name?'

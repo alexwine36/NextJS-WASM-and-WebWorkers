@@ -10,8 +10,12 @@ const ALIVE_COLOR = "#000000";
 
 export const GameOfLife = () => {
   const loadWasm = async () => {
-    const wasmModule = await import("sample-wasm");
-    const { memory } = await import("sample-wasm/sample_wasm_bg.wasm");
+    const wasmModule = await import(
+      "../../../../../crates/sample-wasm/pkg/sample_wasm"
+    );
+    const { memory } = await import(
+      "../../../../../crates/sample-wasm/pkg/sample_wasm_bg.wasm"
+    );
     return { ...wasmModule, memory };
   };
   const display = useRef<HTMLCanvasElement>(null);
@@ -93,14 +97,5 @@ export const GameOfLife = () => {
     }
   }, [display]);
 
-  return (
-    <canvas
-      ref={display}
-      // style={{
-      //   width: 300,
-      //   height: 300,
-      // }}
-      id="game-of-life-canvas"
-    ></canvas>
-  );
+  return <canvas ref={display} id="game-of-life-canvas"></canvas>;
 };

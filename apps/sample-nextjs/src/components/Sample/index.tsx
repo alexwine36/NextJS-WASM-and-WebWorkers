@@ -6,7 +6,9 @@ import { GameOfLife } from "../GameOfLife";
 export const SampleThing = () => {
   const display = useRef<HTMLPreElement>(null);
   const loadWasm = async () => {
-    const wasmModule = await import("sample-wasm");
+    const wasmModule = await import(
+      "../../../../../crates/sample-wasm/pkg/sample_wasm"
+    );
     return wasmModule;
   };
 

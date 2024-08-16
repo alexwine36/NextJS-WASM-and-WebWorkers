@@ -3,7 +3,7 @@ use wasm_bindgen_test::*;
 extern crate sample_wasm;
 use sample_wasm::functions::Universe;
 
-wasm_bindgen_test_configure!(run_in_browser);
+// wasm_bindgen_test_configure!();
 
 #[cfg(test)]
 pub fn input_spaceship() -> Universe {

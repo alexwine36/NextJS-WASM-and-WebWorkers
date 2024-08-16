@@ -1,0 +1,16 @@
+type: "library"
+
+tags: ['rust-wasm']
+
+# tasks:
+#   build:
+#     command: "wasm-pack build"
+#     outputs: 
+#       - "pkg"
+#     options:
+#       mergeArgs: replace
+
+#   test:
+#     command: "wasm-pack test --firefox --headless"
+#     options:
+#       mergeArgs: replace
