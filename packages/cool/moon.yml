@@ -2,6 +2,6 @@ type: library
 
 tasks:
   build:
-    outputs: 
-      - "esm"
-      - "lib"
+    outputs:
+      - 'esm'
+      - 'lib'
