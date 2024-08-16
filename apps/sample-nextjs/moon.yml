@@ -1,5 +1,8 @@
 type: "application"
 
+dependsOn:
+  - sample-wasm
+
 fileGroups:
   app:
     - "pages/**/*"
@@ -12,6 +15,7 @@ tasks:
     inputs:
       - "@group(app)"
       # - "@group(sources)"
+    
 
   # export:
   #   command: 'next export -o ./build'
@@ -27,6 +31,8 @@ tasks:
   dev:
     command: "next dev"
     local: true
+    deps:
+      - '^:build'
 
   start:
     command: "next start"

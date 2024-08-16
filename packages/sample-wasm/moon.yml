@@ -1,0 +1,12 @@
+type: "library"
+
+tags: ['rust']
+
+tasks:
+  build:
+    command: "wasm-pack build"
+    outputs: 
+      - "pkg"
+
+  test:
+    command: "wasm-pack test --firefox --headless"

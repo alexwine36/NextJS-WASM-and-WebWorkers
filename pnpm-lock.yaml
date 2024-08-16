@@ -65,6 +65,9 @@ importers:
       react-dom:
         specifier: ^18
         version: 18.3.1(react@18.3.1)
+      sample-wasm:
+        specifier: workspace:*
+        version: link:../../packages/sample-wasm/pkg
     devDependencies:
       '@types/node':
         specifier: ^20
@@ -84,6 +87,8 @@ importers:
       typescript:
         specifier: ^5
         version: 5.5.4
+
+  packages/sample-wasm/pkg: {}
 
 packages:
 
