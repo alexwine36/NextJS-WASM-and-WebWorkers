@@ -78,7 +78,7 @@ tasks:
     local: true
 
   test:
-    command: 'cargo test --workspace'
+    command: 'nextest run'
     inputs:
       - '@group(cargo)'
       - '@group(sources)'
