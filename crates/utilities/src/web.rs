@@ -1,9 +1,4 @@
-mod utils;
-
-use utilities::console_log;
 use wasm_bindgen::prelude::*;
-pub mod functions;
-// use functions::game_of_life::*;
 
 #[wasm_bindgen]
 extern "C" {
@@ -24,18 +19,8 @@ extern "C" {
     fn log_many(a: &str, b: &str);
 }
 
-#[wasm_bindgen]
-pub fn greet() {
-    console_log!("Hello fibbers");
-    alert("Hello, sample-wasm!");
-}
+#[macro_export]
+macro_rules! console_log {
 
-#[wasm_bindgen]
-pub fn fibonacci(n: u32) -> u32 {
-    // console_log!("fibonaccin' with {}", n);
-    return match n {
-        0 => 0,
-        1 => 1,
-        _ => fibonacci(n - 1) + fibonacci(n - 2),
-    };
+    ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
 }

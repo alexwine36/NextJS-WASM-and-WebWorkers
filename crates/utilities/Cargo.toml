@@ -1,0 +1,12 @@
+[package]
+name = "utilities"
+version = "0.1.0"
+authors = ["Alex Wine <alexwine36@gmail.com>"]
+edition = "2021"
+
+
+[dependencies]
+wasm-bindgen = {workspace = true}
+
+[dev-dependencies]
+wasm-bindgen-test = {workspace = true}
