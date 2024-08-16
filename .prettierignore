@@ -9,3 +9,5 @@ esm/
 lib/
 mjs/
 umd/
+
+.next/

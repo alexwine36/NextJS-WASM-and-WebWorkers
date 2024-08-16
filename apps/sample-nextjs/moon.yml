@@ -1,21 +1,20 @@
-type: "application"
+type: 'application'
 
 dependsOn:
   - sample-wasm
 
 fileGroups:
   app:
-    - "pages/**/*"
-    - "next-env.d.ts"
-    - "next.config.*"
+    - 'pages/**/*'
+    - 'next-env.d.ts'
+    - 'next.config.*'
 
 tasks:
   build:
-    command: "next build"
+    command: 'next build'
     inputs:
-      - "@group(app)"
+      - '@group(app)'
       # - "@group(sources)"
-    
 
   # export:
   #   command: 'next export -o ./build'
@@ -29,11 +28,11 @@ tasks:
   #     - 'build'
 
   dev:
-    command: "next dev"
+    command: 'next dev'
     local: true
     deps:
       - '^:build'
 
   start:
-    command: "next start"
+    command: 'next start'
     local: true
