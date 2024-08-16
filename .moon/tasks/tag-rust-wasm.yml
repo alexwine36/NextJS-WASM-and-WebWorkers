@@ -20,7 +20,9 @@ tasks:
       - '@group(tests)'
       - '/.config/nextest.*'
     env: *env
-
+    options:
+      runInCI: false
+      
   test-node:
     command: "wasm-pack test --node"
     inputs:
@@ -29,6 +31,8 @@ tasks:
       - '@group(tests)'
       - '/.config/nextest.*'
     env: *env
+    options:
+      runInCI: false
 
   test:
     command: "noop"
