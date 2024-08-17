@@ -42,6 +42,11 @@ tasks:
       - '@group(tests)'
       - '/.config/nextest.*'
     env: *env
+    deps:
+      - "~:test-web"
+      - "~:test-node"
+    options:
+      runDepsInParallel: false
   # test:
   #   command: "noop"
   #   deps:
