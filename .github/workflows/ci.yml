@@ -20,8 +20,11 @@ jobs:
         # with:
         #   auto-install: true
         #   cache: false
-      - run: 'moon ci :lint :fmt :test --color'
+
+      - run: 'moon ci --color'
       - uses: appthrust/moon-ci-retrospect@v1
         if: success() || failure()
-        # with:
-        #   access-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: 'moonrepo/run-report-action@v1'
+        if: success() || failure()
+        with:
+          access-token: ${{ secrets.GITHUB_TOKEN }}

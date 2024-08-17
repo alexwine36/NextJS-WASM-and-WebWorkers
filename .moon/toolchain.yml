@@ -50,6 +50,7 @@ rust:
   bins: 
     - cargo-insta
     - cargo-nextest
+    - wasm-pack
 
   # List of rustup toolchain components to install and make available.
   components: 
