@@ -3,6 +3,9 @@ $schema: 'https://moonrepo.dev/schemas/tasks.json'
 implicitInputs:
   - 'Cargo.toml'
 
+implicitDeps:
+  - "^:build"
+
 fileGroups:
   cargo:
     - 'Cargo.toml'

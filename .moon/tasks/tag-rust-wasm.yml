@@ -4,7 +4,7 @@ extends: './tag-rust-base.yml'
 
 
 tasks:
-  build: &build
+  build:
     command: 'wasm-pack build'
     inputs:
       - '@group(cargo)'
