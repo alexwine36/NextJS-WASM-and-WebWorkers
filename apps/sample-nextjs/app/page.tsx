@@ -6,15 +6,17 @@ import styles from './page.module.css';
 
 export default async function Home() {
 	const data = await getFibonacci(12);
+	const serverData = await fetch('http://localhost:3001/api').then((res) => res.json());
 
-	console.log('RESULT', data);
 	return (
 		<main className={styles.main}>
 			<div className={styles.description}>
 				<SampleThing />
 				<p>
 					Get started by editing&nbsp;
-					<code className={styles.code}>app/page.tsx {data}</code>
+					<code className={styles.code}>
+						app/page.tsx {data} {serverData.result}
+					</code>
 				</p>
 				<div>
 					<a
