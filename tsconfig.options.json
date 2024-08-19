@@ -1,6 +1,9 @@
 // https://www.npmjs.com/package/tsconfig-moon
 {
   "extends": "tsconfig-moon/tsconfig.projects.json",
+  "compilerOptions": {
+    "incremental": false
+  }
   // Uncomment if using React
   // "compilerOptions": {
   //   "lib": ["dom"],
