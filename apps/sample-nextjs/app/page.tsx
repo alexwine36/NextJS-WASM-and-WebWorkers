@@ -1,16 +1,20 @@
 import Image from 'next/image';
 
 import { SampleThing } from '../src/components/Sample';
+import { getFibonacci } from '../src/utils/get-fib';
 import styles from './page.module.css';
 
-export default function Home() {
+export default async function Home() {
+	const data = await getFibonacci(12);
+
+	console.log('RESULT', data);
 	return (
 		<main className={styles.main}>
 			<div className={styles.description}>
 				<SampleThing />
 				<p>
 					Get started by editing&nbsp;
-					<code className={styles.code}>app/page.tsx</code>
+					<code className={styles.code}>app/page.tsx {data}</code>
 				</p>
 				<div>
 					<a

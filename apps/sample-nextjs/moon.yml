@@ -36,3 +36,8 @@ tasks:
   start:
     command: 'next start'
     local: true
+
+  test:
+    command: 'vitest'
+    options:
+      mergeArgs: replace

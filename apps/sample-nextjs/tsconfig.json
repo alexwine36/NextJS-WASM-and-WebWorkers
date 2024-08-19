@@ -16,6 +16,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "types": [
+      "vitest/globals"
+    ],
     "plugins": [
       {
         "name": "next"
