@@ -1,7 +1,7 @@
 import { type NextRequest } from 'next/server';
 import * as wasm from 'sample-wasm';
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function GET(_request: NextRequest) {

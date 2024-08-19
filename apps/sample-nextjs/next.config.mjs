@@ -37,6 +37,14 @@ const nextConfig = {
 					}
 				})(),
 			);
+			// NOTE: need to handle "Edge as a separate case"
+			/*
+			type WebpackConfigContext = {
+			dev: boolean;
+			isServer: boolean;
+				nextRuntime?: 'nodejs' | 'edge';
+			}
+				*/
 			// https://github.com/vercel/next.js/issues/25852
 			if (isServer) {
 				config.output.webassemblyModuleFilename = './../static/wasm/[modulehash].wasm';
