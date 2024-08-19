@@ -38,6 +38,6 @@ tasks:
     local: true
 
   test:
-    command: 'vitest'
+    command: 'vitest run'
     options:
       mergeArgs: replace
