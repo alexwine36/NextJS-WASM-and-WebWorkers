@@ -1,8 +1,16 @@
 import Image from 'next/image';
 
-import { SampleThing } from '../src/components/Sample';
+// import { SampleThing } from '../src/components/Sample';
+import dynamic from 'next/dynamic';
 import { getFibonacci } from '../src/utils/get-fib';
 import styles from './page.module.css';
+
+const SampleThing = dynamic(
+	() => import('../src/components/Sample').then((mod) => mod.SampleThing),
+	{
+		ssr: false,
+	},
+);
 
 export default async function Home() {
 	const data = await getFibonacci(12);

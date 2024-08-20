@@ -1,0 +1,33 @@
+import { useCallback, useMemo } from 'react';
+import { createComlink } from './use-comlink';
+
+
+const url = new URL('./sampleWorker.ts', import.meta.url);
+
+const useSampleWorker = createComlink<
+  typeof import('./sampleWorker').SampleWorker
+>(
+  () =>
+    new Worker(url, {
+      type: 'module',
+    }),
+);
+
+
+export const useSample = () => {
+    const {worker} = useSampleWorker();
+    const instance = useMemo(() => {
+      return new worker.proxy();
+    }, [worker]);
+
+    const runReturnNumber = useCallback(async (n: number) => {
+        const use = await instance;
+        console.log("use", use);
+        return await use.returnNumber(n);
+
+    }, [instance]);
+
+    return {
+        runReturnNumber,
+    }
+}

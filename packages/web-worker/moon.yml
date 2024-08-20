@@ -4,3 +4,6 @@ tasks:
   build:
     outputs:
       - 'dist'
+
+  dev:
+    command: 'tsup --watch'

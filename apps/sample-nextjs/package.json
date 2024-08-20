@@ -9,10 +9,11 @@
   },
   "dependencies": {
     "next": "14.2.5",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "*",
+    "react-dom": "*",
     "sample-wasm": "workspace:*",
-    "server-only": "^0.0.1"
+    "server-only": "^0.0.1",
+    "web-worker": "workspace:*"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "*",

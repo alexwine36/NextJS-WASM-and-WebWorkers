@@ -1,23 +1,27 @@
 'use client';
 
+import { useSample } from 'web-worker';
 import { GameOfLife } from '../GameOfLife';
-
 export const SampleThing = () => {
-	const loadWasm = async () => {
-		const wasmModule = await import('../../../../../crates/sample-wasm/pkg/sample_wasm');
-		return wasmModule;
-	};
+	const worker = useSample();
+	// const loadWasm = async () => {
+	// 	const wasmModule = await import('../../../../../crates/sample-wasm/pkg/sample_wasm');
+	// 	return wasmModule;
+	// };
 
 	const handleClick = () => {
-		const runWasm = async () => {
-			const wasmModule = await loadWasm();
-
-			const res = wasmModule.fibonacci(42);
+		worker.runReturnNumber(42).then((res) => {
 			console.log(res);
-			console.log(wasmModule);
-			wasmModule.greet();
-		};
-		runWasm();
+		});
+		// const runWasm = async () => {
+		// 	const wasmModule = await loadWasm();
+
+		// 	const res = wasmModule.fibonacci(42);
+		// 	console.log(res);
+		// 	console.log(wasmModule);
+		// 	wasmModule.greet();
+		// };
+		// runWasm();
 	};
 	return (
 		<div>

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Remote, releaseProxy, wrap } from 'comlink';
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 
 export type WorkerTypes = Blob | string | ReturnWorkerTypes;
 export type ReturnWorkerTypes = () =>
@@ -120,7 +120,7 @@ export function useComlink<T = unknown>(
 export function createComlink<T = unknown>(
   initWorker: ReturnWorkerTypes,
   options: WorkerOptions = {},
-): () => Comlink<T> {
+): () => {worker: Comlink<T>, cleanup: () => void} {
   const worker = () => processWorker(initWorker, options);
   const proxy = (w: Worker) => wrap<T>(w);
 
@@ -135,16 +135,28 @@ export function createComlink<T = unknown>(
       };
     }, [worker, proxy]);
 
-    useEffect(() => {
-      const innerProxy = instance.proxy;
+    // useEffect(() => {
+    //   const innerProxy = instance.proxy;
+    //   const innerWorker = instance.worker;
+    //   return () => {
+    //     (innerProxy as any)[releaseProxy]();
+    //     innerWorker.terminate();
+    //   };
+    // }, [instance]);
+    const cleanup = useCallback(
+      () => {
+        const innerProxy = instance.proxy;
       const innerWorker = instance.worker;
       return () => {
         (innerProxy as any)[releaseProxy]();
         innerWorker.terminate();
       };
-    }, [instance]);
+      },
+      [instance],
+    )
+    
 
-    return instance;
+    return {worker: instance, cleanup};
   };
 }
 
