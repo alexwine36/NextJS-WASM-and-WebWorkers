@@ -3,6 +3,7 @@ type: 'application'
 tags: ['node']
 dependsOn:
   - sample-wasm
+  - web-worker
 
 fileGroups:
   app:

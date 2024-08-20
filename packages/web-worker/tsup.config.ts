@@ -6,7 +6,7 @@ export default defineConfig((options: Options) => ({
 		js: "'use client'",
 	},
 	dts: true,
-	clean: true,
+	// clean: true,
 	format: ['esm'],
 	entryPoints: {
 		index: 'src/index.ts',
