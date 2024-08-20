@@ -1,5 +1,7 @@
 type: library
 
+tags: ['node-library']
+
 tasks:
   build:
     outputs:
@@ -7,3 +9,8 @@ tasks:
 
   dev:
     command: 'tsup --watch'
+
+  test:
+    command: "echo 'No tests available'"
+    options:
+      mergeArgs: replace

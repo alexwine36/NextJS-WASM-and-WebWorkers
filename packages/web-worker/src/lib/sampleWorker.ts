@@ -18,6 +18,7 @@ class SampleWorker {
     }
 
     private async setup() {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const data = await fetch(wasmModule as any);
 
         const wasm = await webWasm(data); //await WebAssembly.instantiate(buffer, {})

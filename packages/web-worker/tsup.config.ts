@@ -10,15 +10,13 @@ export default defineConfig((options: Options) => ({
 	format: ['esm'],
 	entryPoints: {
 		index: 'src/index.ts',
-		// textSearch: 'src/lib/textSearch.ts',
-		// streamWorker: 'src/lib/streamWorker.ts',
 	},
-	// shims: true,
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 	esbuildPlugins: [
 		watPlugin({
 			loader: 'dataurl',
 		}),
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		metaUrlPlugin() as any,
 	],
 	...options,
