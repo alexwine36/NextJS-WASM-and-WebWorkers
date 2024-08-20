@@ -11,7 +11,15 @@ tasks:
       - '@group(sources)'
     env: &env
       CARGO_TERM_COLOR: 'always'
-
+    deps:
+      - "~:build-no-modules"
+  build-no-modules:
+    command: 'wasm-pack build --target web --scope no-modules --out-dir no-modules'
+    inputs:
+      - '@group(cargo)'
+      - '@group(sources)'
+    env: &env
+      CARGO_TERM_COLOR: 'always'
   test-web:
     command: 'wasm-pack test --firefox --headless'
     inputs:

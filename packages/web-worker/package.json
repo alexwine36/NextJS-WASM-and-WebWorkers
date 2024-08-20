@@ -19,6 +19,8 @@
   },
   "devDependencies": {
     "@chialab/esbuild-plugin-meta-url": "^0.18.2",
+    "@no-modules/sample-wasm": "workspace:*",
+    "sample-wasm": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@testing-library/jest-dom": "*",
     "@types/node": "*",
@@ -26,6 +28,7 @@
     "@types/react-dom": "*",
     "@vitejs/plugin-react": "*",
     "comlink": "^4.4.1",
+    "esbuild-plugin-wat": "^0.2.7",
     "tsup": "*",
     "typescript": "*",
     "vitest": "*"

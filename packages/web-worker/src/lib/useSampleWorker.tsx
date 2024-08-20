@@ -23,6 +23,7 @@ export const useSample = () => {
     const runReturnNumber = useCallback(async (n: number) => {
         const use = await instance;
         console.log("use", use);
+        console.log("fibb", await use.fibonacci(12));
         return await use.returnNumber(n);
 
     }, [instance]);
