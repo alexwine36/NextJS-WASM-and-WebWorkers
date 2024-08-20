@@ -2,6 +2,9 @@ type: library
 
 tags: ['node-library']
 
+dependsOn:
+  - sample-wasm
+
 tasks:
   build:
     outputs:
