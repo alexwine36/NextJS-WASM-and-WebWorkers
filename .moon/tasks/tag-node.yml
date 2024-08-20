@@ -104,6 +104,8 @@ tasks:
     command:
       - "tsc"
       - "--build"
+    deps:
+      - '^:build'
     inputs:
       - "@group(app)"
       - "@globs(sources)"

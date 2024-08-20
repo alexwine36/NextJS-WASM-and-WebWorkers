@@ -21,3 +21,4 @@ tasks:
       - '@globs(sources)'
       - 'package.json'
       - 'tsconfig.*.json'
+      - 'tsup.config.ts'

@@ -7,7 +7,7 @@ export default defineConfig((options: Options) => ({
 	},
 	dts: true,
 	// clean: true,
-	format: ['esm'],
+	format: ['esm', 'cjs'],
 	entryPoints: {
 		index: 'src/index.ts',
 	},
