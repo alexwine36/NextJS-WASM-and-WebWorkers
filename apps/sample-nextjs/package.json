@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "moon sample-nextjs:build",
     "start": "next start --port 3005"
   },
   "dependencies": {

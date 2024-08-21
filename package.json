@@ -3,16 +3,12 @@
   "name": "moon-test",
   "infra": "monorepo",
   "scripts": {
-    "build": "packemon build-workspace",
-    "check": "yarn run type && yarn run test && yarn run lint",
-    "coverage": "yarn run test --coverage",
-    "format": "prettier --write ./packages",
-    "lint": "eslint --cache --fix ./packages",
-    "pack": "packemon pack-workspace --addEngines --declaration",
-    "prelease": "yarn run pack && yarn run check",
-    "release": "echo 'Customize your own release script!'",
-    "test": "vitest",
-    "type": "tsc --build"
+    "build": "moon :build",
+    "dev": "moon :dev",
+    "test": "moon :test",
+    "lint": "moon :lint",
+    "format": "moon :format",
+    "typecheck": "moon :typecheck"
   },
   "workspaces": [
     "packages/*"
