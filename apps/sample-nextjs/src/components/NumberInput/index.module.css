@@ -1,20 +1,19 @@
-
 .panel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: inherit;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: inherit;
 	font-size: inherit;
 }
 .panel label {
-    margin-right: 8px;
+	margin-right: 8px;
 }
 
 .panel input {
-    font-family: inherit;
+	font-family: inherit;
 	font-size: inherit;
-    border: 1px solid rgba(var(--card-border-rgb), 0.15);
-    padding-left: 4px;
-    max-width: 50px;
-    border-radius: calc(var(--border-radius) / 2);
+	border: 1px solid rgba(var(--card-border-rgb), 0.15);
+	padding-left: 4px;
+	max-width: 50px;
+	border-radius: calc(var(--border-radius) / 2);
 }
