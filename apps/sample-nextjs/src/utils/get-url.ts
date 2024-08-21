@@ -10,6 +10,9 @@ export class LocalUrl {
 		if (env_url) {
 			this.urlString = `https://${env_url}`;
 		}
+		if (window) {
+			this.urlString = window.location.origin;
+		}
 		this.url = new URL(this.urlString);
 		this.path = path;
 	}
