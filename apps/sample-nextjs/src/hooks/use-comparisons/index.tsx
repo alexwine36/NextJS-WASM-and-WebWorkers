@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { fibonacci, useSample } from 'web-worker';
 import { runTask } from '../../components/RunnableComparisonCard';
 import { comparisionsAtom, inputAtom, microtaskQueueAtom } from '../../state/atoms';
+import { LocalUrl } from '../../utils/get-url';
 export type ComparisonOption = {
 	title: string;
 	description: string;
@@ -48,7 +49,9 @@ export const useComparisons = () => {
 				title: 'Node WASM',
 				description: 'This is an API call using the WASM module',
 				run: async (n: number) => {
-					const res = await fetch(`http://localhost:3001/api?query=${n}`).then((res) => res.json());
+					const res = await fetch(new LocalUrl('/api').addQuery('query', `${n}`).toString()).then(
+						(res) => res.json(),
+					);
 					console.log(res);
 					return res.result;
 				},
@@ -57,9 +60,9 @@ export const useComparisons = () => {
 				title: 'Node JS',
 				description: 'This is an API call using the JS module',
 				run: async (n: number) => {
-					const res = await fetch(`http://localhost:3001/api/js?query=${n}`).then((res) =>
-						res.json(),
-					);
+					const res = await fetch(
+						new LocalUrl('/api/js').addQuery('query', `${n}`).toString(),
+					).then((res) => res.json());
 					console.log(res);
 					return res.result;
 				},

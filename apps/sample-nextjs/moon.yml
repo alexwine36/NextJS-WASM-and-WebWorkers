@@ -32,7 +32,7 @@ tasks:
   #     - 'build'
 
   dev:
-    command: 'next dev'
+    command: 'next dev --port 3001'
     local: true
     deps:
       - '^:build'
