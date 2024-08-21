@@ -48,7 +48,6 @@ rust:
 
   # List of Cargo binaries to install globally and make available.
   bins: 
-    - cargo-insta
     - cargo-nextest
     - wasm-pack
 

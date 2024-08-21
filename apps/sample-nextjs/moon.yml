@@ -17,6 +17,8 @@ tasks:
     inputs:
       - '@group(app)'
       # - "@group(sources)"
+    deps:
+      - '^:build'
 
   # export:
   #   command: 'next export -o ./build'
