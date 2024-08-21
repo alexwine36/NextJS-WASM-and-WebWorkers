@@ -1,7 +1,7 @@
 import { atom } from 'jotai';
 import { ComparisonOption } from '../hooks/use-comparisons';
 
-export const inputAtom = atom<number>(50);
+export const inputAtom = atom<number>(40);
 
 export type ComparisonOptionAtom = ComparisonOption & {
 	duration?: number;

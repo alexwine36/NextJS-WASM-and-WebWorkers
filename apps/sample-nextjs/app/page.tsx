@@ -1,5 +1,6 @@
 // import { SampleThing } from '../src/components/Sample';
 import dynamic from 'next/dynamic';
+import { NumberInput } from '../src/components/NumberInput';
 import { Providers } from '../src/components/providers';
 import styles from './page.module.css';
 
@@ -22,6 +23,7 @@ export default async function Home() {
 					<input type="number" value={42} />
 				</div> */}
 				{/* <WebWorker /> */}
+				<NumberInput />
 				<OptionGrid />
 			</main>
 		</Providers>

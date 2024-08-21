@@ -16,7 +16,10 @@ export const ComparisonCard = ({ title, description, children, danger }: Compari
 			}}
 		>
 			<h2>{title}</h2>
-			<p>{description}</p>
+			<p>
+				<b>{danger ? 'Blocking' : 'Non-Blocking'}</b> <br />
+				{description}
+			</p>
 			{children}
 		</div>
 	);

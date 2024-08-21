@@ -31,7 +31,7 @@ pub fn greet() {
 }
 
 #[wasm_bindgen]
-pub fn fibonacci(n: u32) -> u32 {
+pub fn fibonacci(n: u64) -> u64 {
     // console_log!("fibonaccin' with {}", n);
     return match n {
         0 => 0,
