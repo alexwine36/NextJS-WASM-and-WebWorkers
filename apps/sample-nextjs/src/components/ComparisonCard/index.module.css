@@ -1,7 +1,7 @@
 .main {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
 	padding: 6rem;
 	min-height: 100vh;
@@ -47,6 +47,7 @@
 }
 
 .card {
+    margin: 0.5rem;
 	padding: 1rem 1.2rem;
 	border-radius: var(--border-radius);
 	background: rgba(var(--card-rgb), 0);

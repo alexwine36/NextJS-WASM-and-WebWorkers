@@ -8,6 +8,7 @@
     "start": "next start --port 3005"
   },
   "dependencies": {
+    "jotai": "^2.9.3",
     "next": "14.2.5",
     "react": "*",
     "react-dom": "*",

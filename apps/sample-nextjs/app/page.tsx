@@ -1,110 +1,29 @@
-import Image from 'next/image';
-
 // import { SampleThing } from '../src/components/Sample';
 import dynamic from 'next/dynamic';
-import { getFibonacci } from '../src/utils/get-fib';
+import { Providers } from '../src/components/providers';
 import styles from './page.module.css';
 
-const SampleThing = dynamic(
-	() => import('../src/components/Sample').then((mod) => mod.SampleThing),
+const OptionGrid = dynamic(
+	() => import('../src/components/OptionGrid').then((mod) => mod.OptionGrid),
 	{
 		ssr: false,
 	},
 );
 
 export default async function Home() {
-	const data = await getFibonacci(12);
-	const serverData = await fetch('http://localhost:3001/api').then((res) => res.json());
+	// const data = await getFibonacci(12);
+	// const serverData = await fetch('http://localhost:3001/api').then((res) => res.json());
 
 	return (
-		<main className={styles.main}>
-			<div className={styles.description}>
-				<SampleThing />
-				<p>
-					Get started by editing&nbsp;
-					<code className={styles.code}>
-						app/page.tsx {data} {serverData.result}
-					</code>
-				</p>
-				<div>
-					<a
-						href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						By{' '}
-						<Image
-							src="/vercel.svg"
-							alt="Vercel Logo"
-							className={styles.vercelLogo}
-							width={100}
-							height={24}
-							priority
-						/>
-					</a>
-				</div>
-			</div>
-
-			<div className={styles.center}>
-				<Image
-					className={styles.logo}
-					src="/next.svg"
-					alt="Next.js Logo"
-					width={180}
-					height={37}
-					priority
-				/>
-			</div>
-
-			<div className={styles.grid}>
-				<a
-					href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-					className={styles.card}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<h2>
-						Docs <span>-&gt;</span>
-					</h2>
-					<p>Find in-depth information about Next.js features and API.</p>
-				</a>
-
-				<a
-					href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-					className={styles.card}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<h2>
-						Learn <span>-&gt;</span>
-					</h2>
-					<p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-				</a>
-
-				<a
-					href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-					className={styles.card}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<h2>
-						Templates <span>-&gt;</span>
-					</h2>
-					<p>Explore starter templates for Next.js.</p>
-				</a>
-
-				<a
-					href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-					className={styles.card}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<h2>
-						Deploy <span>-&gt;</span>
-					</h2>
-					<p>Instantly deploy your Next.js site to a shareable URL with Vercel.</p>
-				</a>
-			</div>
-		</main>
+		<Providers>
+			<main className={styles.main}>
+				{/* <div className={styles.center}>
+					<div>Place input here</div>
+					<input type="number" value={42} />
+				</div> */}
+				{/* <WebWorker /> */}
+				<OptionGrid />
+			</main>
+		</Providers>
 	);
 }

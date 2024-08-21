@@ -6,6 +6,7 @@ import webWasm, { InitOutput } from '@no-modules/sample-wasm';
 // import type wasm from 'sample-wasm';
 // const wasmModule = import('sample-wasm/sample_wasm_bg.wasm')
 import wasmModule from '../../node_modules/@no-modules/sample-wasm/sample_wasm_bg.wasm';
+import { fibonacci } from './js-fibonacci';
 class SampleWorker {
     wasm!: InitOutput;
     
@@ -33,6 +34,9 @@ class SampleWorker {
     }
     fibonacci(n: number) {
         return this.wasm.fibonacci(n);
+    }
+    jsFibonacci(n: number) {
+        return fibonacci(n)
     }
 }
 

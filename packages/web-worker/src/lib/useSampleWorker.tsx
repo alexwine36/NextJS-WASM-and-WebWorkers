@@ -28,7 +28,23 @@ export const useSample = () => {
 
     }, [instance]);
 
+    const runFibonacci = useCallback(async (n: number) => {
+      const use = await instance;
+      
+      return await use.fibonacci(n)
+
+  }, [instance]);
+
+  const runJsFibonacci = useCallback(async (n: number) => {
+    const use = await instance;
+    
+    return await use.jsFibonacci(n)
+
+}, [instance]);
+
     return {
         runReturnNumber,
+        runFibonacci,
+        runJsFibonacci
     }
 }
