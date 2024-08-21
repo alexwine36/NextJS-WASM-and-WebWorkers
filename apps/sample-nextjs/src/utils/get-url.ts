@@ -8,7 +8,7 @@ export class LocalUrl {
 		this.urlString = 'http://localhost:3001';
 		const env_url = process.env.NEXT_PUBLIC_VERCEL_URL;
 		if (env_url) {
-			this.urlString = env_url;
+			this.urlString = `https://${env_url}`;
 		}
 		this.url = new URL(this.urlString);
 		this.path = path;
