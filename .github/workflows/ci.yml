@@ -12,9 +12,6 @@ jobs:
   ci:
     name: 'CI'
     runs-on: 'ubuntu-latest'
-    strategy:
-      matrix:
-        index: [0, 1]
     steps:
       - uses: 'actions/checkout@v4'
         with:
@@ -24,7 +21,7 @@ jobs:
         #   auto-install: true
         #   cache: false
 
-      - run: 'moon ci --color --job ${{ matrix.index }} --jobTotal 2'
+      - run: 'moon ci --color'
       - uses: appthrust/moon-ci-retrospect@v1
         if: success() || failure()
       - uses: 'moonrepo/run-report-action@v1'
