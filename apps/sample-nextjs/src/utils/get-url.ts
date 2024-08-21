@@ -6,7 +6,7 @@ export class LocalUrl {
 
 	constructor(path?: string) {
 		this.urlString = 'http://localhost:3001';
-		const env_url = process.env.NEXT_PUBLIC_API_URL;
+		const env_url = process.env.NEXT_PUBLIC_VERCEL_URL;
 		if (env_url) {
 			this.urlString = env_url;
 		}
