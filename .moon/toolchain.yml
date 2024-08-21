@@ -47,13 +47,19 @@ rust:
   version: "1.79.0"
 
   # List of Cargo binaries to install globally and make available.
-  bins: []
+  bins: 
+    - cargo-insta
+    - cargo-nextest
+    - wasm-pack
 
   # List of rustup toolchain components to install and make available.
-  components: []
+  components: 
+   - clippy
+   - rustfmt
 
   # Sync the configured version above as a channel to the root `rust-toolchain.toml` config.
   syncToolchainConfig: true
 
   # List of rustup toolchain targets to install and make available.
-  targets: []
+  targets: 
+    - wasm32-unknown-unknown

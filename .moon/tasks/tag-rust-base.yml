@@ -3,17 +3,20 @@ $schema: 'https://moonrepo.dev/schemas/tasks.json'
 implicitInputs:
   - 'Cargo.toml'
 
+implicitDeps:
+  - "^:build"
+
 fileGroups:
   cargo:
     - 'Cargo.toml'
-    - 'crates/*/src/**/*'
+    - 'src/**/*'
     - 'crates/*/Cargo.toml'
-    # - '/.cargo/config.toml'
+
     - '/rust-toolchain.toml'
   sources: []
   tests:
-    - 'crates/*/benches/**/*'
-    - 'crates/*/tests/**/*'
+    - 'benches/**/*'
+    - 'tests/**/*'
 
 tasks:
   cargo:

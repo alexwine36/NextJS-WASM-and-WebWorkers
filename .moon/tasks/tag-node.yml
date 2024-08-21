@@ -62,29 +62,30 @@ tasks:
     local: true
 
   # https://moonrepo.dev/docs/guides/examples/eslint
-  # lint:
-  #   command:
-  #     - 'eslint'
-  #     - '--ext'
-  #     - '.ts,.tsx,.cts,.mts,.js,.jsx,.cjs,.mjs'
-  #     - '--fix'
-  #     - '--report-unused-disable-directives'
-  #     - '--no-error-on-unmatched-pattern'
-  #     - '--exit-on-fatal-error'
-  #     - '--ignore-path'
-  #     - '@in(2)'
-  #     - '.'
-  #   inputs:
-  #     - '*.config.*'
-  #     - '**/.eslintrc.*'
-  #     - '/.eslintignore'
-  #     - '/.eslintrc.*'
-  #     - 'tsconfig.json'
-  #     - '/tsconfig.eslint.json'
-  #     - '/tsconfig.options.json'
-  #     - '@group(app)'
-  #     - '@globs(sources)'
-  #     - '@globs(tests)'
+  lint:
+    command:
+      - 'eslint'
+      # - '--ext'
+      # - '.ts,.tsx,.cts,.mts,.js,.jsx,.cjs,.mjs'
+      # - '--fix'
+      # - '--report-unused-disable-directives'
+      # - '--no-error-on-unmatched-pattern'
+      # - '--exit-on-fatal-error'
+      # - '--ignore-path'
+      # - '@in(2)'
+      # - "-c" 
+      # - "eslint.config.mjs"
+      - '.'
+    inputs:
+      - '*.config.*'
+      - '**/.eslintrc.*'
+      - '/.eslintrc.*'
+      - 'tsconfig.json'
+      # - '/tsconfig.eslint.json'
+      - '/tsconfig.options.json'
+      - '@group(app)'
+      - '@globs(sources)'
+      - '@globs(tests)'
 
   # https://moonrepo.dev/docs/guides/examples/jest
   test:
@@ -103,6 +104,8 @@ tasks:
     command:
       - "tsc"
       - "--build"
+    deps:
+      - '^:build'
     inputs:
       - "@group(app)"
       - "@globs(sources)"

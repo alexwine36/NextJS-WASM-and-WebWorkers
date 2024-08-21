@@ -1,0 +1,36 @@
+{
+  "name": "web-worker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "*"
+  },
+  "devDependencies": {
+    "@chialab/esbuild-plugin-meta-url": "^0.18.2",
+    "@no-modules/sample-wasm": "workspace:*",
+    "sample-wasm": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@testing-library/jest-dom": "*",
+    "@types/node": "*",
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "@vitejs/plugin-react": "*",
+    "comlink": "^4.4.1",
+    "esbuild-plugin-wat": "^0.2.7",
+    "tsup": "*",
+    "typescript": "*",
+    "vitest": "*"
+  }
+}

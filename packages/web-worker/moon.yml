@@ -1,0 +1,19 @@
+type: library
+
+tags: ['node-library']
+
+dependsOn:
+  - sample-wasm
+
+tasks:
+  build:
+    outputs:
+      - 'dist'
+
+  dev:
+    command: 'tsup --watch'
+
+  test:
+    command: "echo 'No tests available'"
+    options:
+      mergeArgs: replace

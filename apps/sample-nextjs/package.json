@@ -5,21 +5,26 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start --port 3005"
   },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
+    "jotai": "^2.9.3",
     "next": "14.2.5",
-    "sample-wasm": "workspace:*"
+    "numbro": "^2.5.0",
+    "react": "*",
+    "react-dom": "*",
+    "sample-wasm": "workspace:*",
+    "server-only": "^0.0.1",
+    "web-worker": "workspace:*"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@testing-library/jest-dom": "*",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.5"
+    "@vitejs/plugin-react": "*",
+    "typescript": "^5",
+    "vite-plugin-wasm": "^3.3.0",
+    "vitest": "*"
   }
 }

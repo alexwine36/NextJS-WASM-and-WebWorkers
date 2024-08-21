@@ -1,0 +1,24 @@
+$schema: 'https://moonrepo.dev/schemas/tasks.json'
+
+extends: "./tag-node.yml"
+
+tasks:
+  # https://moonrepo.dev/docs/guides/examples/packemon
+  # build:
+  #   command:
+  #     - 'packemon'
+  #     - 'pack'
+  #     - '--addEngines'
+  #     - '--addExports'
+  #     - '--declaration'
+  #   inputs:
+  #     - '@globs(sources)'
+  #     - 'package.json'
+  #     - 'tsconfig.*.json'
+  build:
+    command: 'tsup'
+    inputs:
+      - '@globs(sources)'
+      - 'package.json'
+      - 'tsconfig.*.json'
+      - 'tsup.config.ts'

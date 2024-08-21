@@ -4,14 +4,22 @@ extends: './tag-rust-base.yml'
 
 
 tasks:
-  build: &build
+  build:
     command: 'wasm-pack build'
     inputs:
       - '@group(cargo)'
       - '@group(sources)'
     env: &env
       CARGO_TERM_COLOR: 'always'
-
+    deps:
+      - "~:build-no-modules"
+  build-no-modules:
+    command: 'wasm-pack build --target web --scope no-modules --out-dir no-modules'
+    inputs:
+      - '@group(cargo)'
+      - '@group(sources)'
+    env: &env
+      CARGO_TERM_COLOR: 'always'
   test-web:
     command: 'wasm-pack test --firefox --headless'
     inputs:
@@ -20,6 +28,8 @@ tasks:
       - '@group(tests)'
       - '/.config/nextest.*'
     env: *env
+    options:
+      runInCI: false
 
   test-node:
     command: "wasm-pack test --node"
@@ -29,14 +39,29 @@ tasks:
       - '@group(tests)'
       - '/.config/nextest.*'
     env: *env
+    options:
+      runInCI: false
 
   test:
-    command: "noop"
+    command: 'nextest run'
+    inputs:
+      - '@group(cargo)'
+      - '@group(sources)'
+      - '@group(tests)'
+      - '/.config/nextest.*'
+    env: *env
     deps:
       - "~:test-web"
       - "~:test-node"
     options:
       runDepsInParallel: false
+  # test:
+  #   command: "noop"
+  #   deps:
+  #     - "~:test-web"
+  #     - "~:test-node"
+  #   options:
+  #     runDepsInParallel: false
     
 # implicitInputs:
 #   - 'Cargo.toml'
