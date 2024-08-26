@@ -39,8 +39,8 @@
   <p align="center">
     <div>An example project comparing computation speed with Web Workers and WASM</div>
     <br />
-    <a href="https://github.com/alexwine36/Moon-Repo-Test"><strong>Explore the docs »</strong></a>
-    <br />
+    <!-- <a href="https://github.com/alexwine36/Moon-Repo-Test"><strong>Explore the docs »</strong></a>
+    <br /> -->
     <br />
     <a href="https://moon-repo-test.vercel.app/">View Demo</a>
     ·
@@ -85,22 +85,22 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-##  🚀  **[Project Name]** - Your Description Here! 
+##  🚀  **NextJS WASM and Workers** - Compare efficiency of offloading tasks on the web! 
 
-This repository contains...  [ Briefly describe what the project is about ] 
+This repository contains a NextJS application that is able to run web workers and WASM on the server and client. For quick comparison, functions calculate fibonacci numbers.
 
 **Key Features:** 
-- ⚡️  [Feature 1]
-- 💻  [Feature 2]
-- 💡  [Feature 3]
+- ⚡️  Monorepo using [Moonrepo][moon-url]
+- 💻  NextJS bundling web workers and wasm
+- 💡  Web worker using web assembly
 
-**Getting Started:** 
+<!-- **Getting Started:** 
 - ➡️  [Briefly explain how to get started with the project]
--  [Optional: Link to documentation]
+-  [Optional: Link to documentation] -->
 
 **Contribution:** 
 - 🎉  Contributions are welcome! 
--  [Optional: Link to contribution guidelines]
+<!-- -  [Optional: Link to contribution guidelines] -->
 
 **Let's build something amazing together! ✨** 
 
@@ -130,7 +130,7 @@ To get a local copy up and running follow these simple example steps.
 
 Install moon - [instructions](https://moonrepo.dev/docs/install)
 
-```sh
+<!-- ```sh
 moon setup
 ```
 
@@ -138,7 +138,7 @@ moon setup
 Run dev servers
 ```sh
 moon :dev
-```
+``` -->
 
 ### Installation
 
@@ -153,7 +153,7 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    moon setup
    ```
-3. Run tests
+3. Run development server
    ```sh
    moon :dev
    ```
@@ -163,26 +163,26 @@ _Below is an example of how you can instruct your audience on installing and set
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+<!-- ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
+<!-- - [x] Add Changelog
 - [x] Add back to top links
 - [ ] Add Additional Templates w/ Examples
 - [ ] Add "components" document to easily copy & paste sections of the readme
 - [ ] Multi-language Support
     - [ ] Chinese
-    - [ ] Spanish
+    - [ ] Spanish -->
 
 See the [open issues](https://github.com/alexwine36/Moon-Repo-Test/issues) for a full list of proposed features (and known issues).
 
@@ -211,7 +211,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -220,9 +220,10 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [https://github.com/alexwine36/Moon-Repo-Test/issues?q=sort%3Aupdated-desc+is%3Aissue+is%3Aopen](https://github.com/alexwine36/Moon-Repo-Test/issues?q=sort%3Aupdated-desc+is%3Aissue+is%3Aopen)
 
-Project Link: [https://github.com/alexwine36/${{project}}](https://github.com/alexwine36/${{project}})
+[Alex Wine](https://github.com/alexwine36)
+
+Project Link: [https://github.com/alexwine36/Moon-Repo-Test](https://github.com/alexwine36/Moon-Repo-Test)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -233,14 +234,11 @@ Project Link: [https://github.com/alexwine36/${{project}}](https://github.com/al
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
+* [wasm-pack](https://github.com/rustwasm/wasm-pack)
+* [Comlink](https://github.com/GoogleChromeLabs/comlink)
 * [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -259,7 +257,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [license-shield]: https://img.shields.io/github/license/alexwine36/Moon-Repo-Test.svg?style=for-the-badge
 [license-url]: https://github.com/alexwine36/Moon-Repo-Test/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[linkedin-url]: https://linkedin.com/in/alexwine
 [product-screenshot]: docs/assets/screenshot.jpg
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
@@ -272,31 +270,3 @@ Use this space to list resources you find helpful and would like to give credit 
 
 
 
-
-
-# NextJS Web Workers and WASM
-
-Example repo with web workers, browser run web assembly and server run web assembly in NextJS.
-
-
-
-
-## Tooling
-- [moon](https://moonrepo.dev/docs) for monorepo management
-- Rust for compiling web assembly
-- NextJS for client build
-
-
-## Development
-
-Install moon - [instructions](https://moonrepo.dev/docs/install)
-
-```sh
-moon setup
-```
-
-
-Run dev servers
-```sh
-moon :dev
-```
