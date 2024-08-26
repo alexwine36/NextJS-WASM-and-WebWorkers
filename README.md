@@ -245,7 +245,7 @@ Use this space to list resources you find helpful and would like to give credit 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/NextJS Web Workers and WASM(https://img.shields.io/github/contributors/alexwine36/Moon-Repo-Test).svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/alexwine36/Moon-Repo-Test.svg?style=for-the-badge
 [contributors-url]: https://github.com/alexwine36/Moon-Repo-Test/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/NextJS Web Workers and WASM.svg?style=for-the-badge
 [forks-url]: https://github.com/othneildrew/NextJS Web Workers and WASM/network/members
@@ -277,7 +277,7 @@ Use this space to list resources you find helpful and would like to give credit 
 
 
 
-<!-- 
+
 # NextJS Web Workers and WASM
 
 Example repo with web workers, browser run web assembly and server run web assembly in NextJS.
@@ -303,4 +303,4 @@ moon setup
 Run dev servers
 ```sh
 moon :dev
-``` -->
+```
