@@ -1,4 +1,4 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/NextJS Web Workers and WASM/pull/73 -->
+<!-- Improved compatibility of back to top link: See: https://github.com/alexwine36/Moon-Repo-Test/pull/73 -->
 <a id="readme-top"></a>
 <!--
 *** Thanks for checking out the NextJS Web Workers and WASM. If you have a suggestion
@@ -30,23 +30,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/NextJS Web Workers and WASM">
+  <!-- <a href="https://github.com/alexwine36/Moon-Repo-Test">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  </a> -->
 
   <h3 align="center">NextJS Web Workers and WASM</h3>
 
   <p align="center">
     <div>An example project comparing computation speed with Web Workers and WASM</div>
     <br />
-    <a href="https://github.com/alexwine36/NextJS Web Workers and WASM"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/alexwine36/Moon-Repo-Test"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/NextJS Web Workers and WASM">View Demo</a>
+    <a href="https://moon-repo-test.vercel.app/">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/NextJS Web Workers and WASM/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/alexwine36/Moon-Repo-Test/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/NextJS Web Workers and WASM/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/alexwine36/Moon-Repo-Test/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -110,7 +110,7 @@ This repository contains...  [ Briefly describe what the project is about ]
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Next][Next.js]][Next-url]
+[![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
 * [![Vue][Vue.js]][Vue-url]
 * [![Angular][Angular.io]][Angular-url]
@@ -144,7 +144,7 @@ _Below is an example of how you can instruct your audience on installing and set
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
    ```sh
-   git clone https://github.com/alexwine36/NextJS Web Workers and WASM.git
+   git clone https://github.com/alexwine36/Moon-Repo-Test.git
    ```
 3. Install NPM packages
    ```sh
@@ -181,7 +181,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
     - [ ] Chinese
     - [ ] Spanish
 
-See the [open issues](https://github.com/othneildrew/NextJS Web Workers and WASM/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/alexwine36/Moon-Repo-Test/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -247,17 +247,17 @@ Use this space to list resources you find helpful and would like to give credit 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/alexwine36/Moon-Repo-Test.svg?style=for-the-badge
 [contributors-url]: https://github.com/alexwine36/Moon-Repo-Test/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/NextJS Web Workers and WASM.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/NextJS Web Workers and WASM/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/NextJS Web Workers and WASM.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/NextJS Web Workers and WASM/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/NextJS Web Workers and WASM.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/NextJS Web Workers and WASM/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/NextJS Web Workers and WASM.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/NextJS Web Workers and WASM/blob/master/LICENSE.txt
+[forks-shield]: https://img.shields.io/github/forks/alexwine36/Moon-Repo-Test.svg?style=for-the-badge
+[forks-url]: https://github.com/alexwine36/Moon-Repo-Test/network/members
+[stars-shield]: https://img.shields.io/github/stars/alexwine36/Moon-Repo-Test.svg?style=for-the-badge
+[stars-url]: https://github.com/alexwine36/Moon-Repo-Test/stargazers
+[issues-shield]: https://img.shields.io/github/issues/alexwine36/Moon-Repo-Test.svg?style=for-the-badge
+[issues-url]: https://github.com/alexwine36/Moon-Repo-Test/issues
+[license-shield]: https://img.shields.io/github/license/alexwine36/Moon-Repo-Test.svg?style=for-the-badge
+[license-url]: https://github.com/alexwine36/Moon-Repo-Test/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: docs/assets/screenshot.jpg
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
