@@ -34,7 +34,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a> -->
 
-  <h3 align="center">NextJS Web Workers and WASM</h3>
+  <h3 align="center">NextJS WASM and Web Workers</h3>
 
   <p align="center">
     <div>An example project comparing computation speed with Web Workers and WASM</div>
