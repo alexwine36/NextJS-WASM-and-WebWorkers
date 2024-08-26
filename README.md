@@ -1,4 +1,4 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/alexwine36/Moon-Repo-Test/pull/73 -->
+<!-- Improved compatibility of back to top link: See: https://github.com/alexwine36/NextJS-WASM-and-WebWorkers/pull/73 -->
 <a id="readme-top"></a>
 <!--
 *** Thanks for checking out the NextJS Web Workers and WASM. If you have a suggestion
@@ -30,7 +30,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <!-- <a href="https://github.com/alexwine36/Moon-Repo-Test">
+  <!-- <a href="https://github.com/alexwine36/NextJS-WASM-and-WebWorkers">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a> -->
 
@@ -39,14 +39,14 @@
   <p align="center">
     <div>An example project comparing computation speed with Web Workers and WASM</div>
     <br />
-    <!-- <a href="https://github.com/alexwine36/Moon-Repo-Test"><strong>Explore the docs »</strong></a>
+    <!-- <a href="https://github.com/alexwine36/NextJS-WASM-and-WebWorkers"><strong>Explore the docs »</strong></a>
     <br /> -->
     <br />
     <a href="https://moon-repo-test.vercel.app/">View Demo</a>
     ·
-    <a href="https://github.com/alexwine36/Moon-Repo-Test/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/alexwine36/NextJS-WASM-and-WebWorkers/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
-    <a href="https://github.com/alexwine36/Moon-Repo-Test/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/alexwine36/NextJS-WASM-and-WebWorkers/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -114,7 +114,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 [![React][React.js]][React-url]
 [![Rust][Rust]][Rust-url]
 [![Moon][Moon]][Moon-url]
-
+[![Wasm][Wasm]][Wasm-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -147,7 +147,7 @@ _Below is an example of how you can instruct your audience on installing and set
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/alexwine36/Moon-Repo-Test.git
+   git clone https://github.com/alexwine36/NextJS-WASM-and-WebWorkers.git
    ```
 2. Initialize Moon
    ```sh
@@ -184,7 +184,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
     - [ ] Chinese
     - [ ] Spanish -->
 
-See the [open issues](https://github.com/alexwine36/Moon-Repo-Test/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/alexwine36/NextJS-WASM-and-WebWorkers/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -223,7 +223,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 [Alex Wine](https://github.com/alexwine36)
 
-Project Link: [https://github.com/alexwine36/Moon-Repo-Test](https://github.com/alexwine36/Moon-Repo-Test)
+Project Link: [https://github.com/alexwine36/NextJS-WASM-and-WebWorkers](https://github.com/alexwine36/NextJS-WASM-and-WebWorkers)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -246,16 +246,16 @@ Use this space to list resources you find helpful and would like to give credit 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/alexwine36/Moon-Repo-Test.svg?style=for-the-badge
-[contributors-url]: https://github.com/alexwine36/Moon-Repo-Test/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/alexwine36/Moon-Repo-Test.svg?style=for-the-badge
-[forks-url]: https://github.com/alexwine36/Moon-Repo-Test/network/members
-[stars-shield]: https://img.shields.io/github/stars/alexwine36/Moon-Repo-Test.svg?style=for-the-badge
-[stars-url]: https://github.com/alexwine36/Moon-Repo-Test/stargazers
-[issues-shield]: https://img.shields.io/github/issues/alexwine36/Moon-Repo-Test.svg?style=for-the-badge
-[issues-url]: https://github.com/alexwine36/Moon-Repo-Test/issues
-[license-shield]: https://img.shields.io/github/license/alexwine36/Moon-Repo-Test.svg?style=for-the-badge
-[license-url]: https://github.com/alexwine36/Moon-Repo-Test/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/alexwine36/NextJS-WASM-and-WebWorkers.svg?style=for-the-badge
+[contributors-url]: https://github.com/alexwine36/NextJS-WASM-and-WebWorkers/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/alexwine36/NextJS-WASM-and-WebWorkers.svg?style=for-the-badge
+[forks-url]: https://github.com/alexwine36/NextJS-WASM-and-WebWorkers/network/members
+[stars-shield]: https://img.shields.io/github/stars/alexwine36/NextJS-WASM-and-WebWorkers.svg?style=for-the-badge
+[stars-url]: https://github.com/alexwine36/NextJS-WASM-and-WebWorkers/stargazers
+[issues-shield]: https://img.shields.io/github/issues/alexwine36/NextJS-WASM-and-WebWorkers.svg?style=for-the-badge
+[issues-url]: https://github.com/alexwine36/NextJS-WASM-and-WebWorkers/issues
+[license-shield]: https://img.shields.io/github/license/alexwine36/NextJS-WASM-and-WebWorkers.svg?style=for-the-badge
+[license-url]: https://github.com/alexwine36/NextJS-WASM-and-WebWorkers/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/alexwine
 [product-screenshot]: docs/assets/screenshot.jpg
@@ -268,5 +268,6 @@ Use this space to list resources you find helpful and would like to give credit 
 [Moon]: https://img.shields.io/badge/Moonrepo-6e58d1?style=for-the-badge&logo=moonrepo&logoColor=white
 [Moon-url]: https://moonrepo.dev/
 
-
+[Wasm]: https://img.shields.io/badge/webassembly-6550F0?style=for-the-badge&logo=webassembly&logoColor=white
+[Wasm-url]: https://webassembly.org/
 
