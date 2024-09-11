@@ -29,7 +29,7 @@ tasks:
       - '/.config/nextest.*'
     env: *env
     options:
-      runInCI: false
+      runInCI: true
 
   test-node:
     command: "wasm-pack test --node"
@@ -40,7 +40,7 @@ tasks:
       - '/.config/nextest.*'
     env: *env
     options:
-      runInCI: false
+      runInCI: true
 
   test:
     command: 'nextest run'

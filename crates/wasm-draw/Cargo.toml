@@ -1,0 +1,33 @@
+[package]
+name = "wasm-draw"
+version = "0.1.0"
+authors = ["Alex Wine <alexwine36@gmail.com>"]
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = { workspace = true }
+utilities = { path = "../utilities" }
+
+[dev-dependencies]
+wasm-bindgen-test = { workspace = true }
+
+
+[dependencies.web-sys]
+version = "0.3.4"
+features = [
+    'CanvasRenderingContext2d',
+    'console',
+    'CssStyleDeclaration',
+    'Document',
+    'Element',
+    'EventTarget',
+    'HtmlCanvasElement',
+    'HtmlElement',
+    'HtmlImageElement',
+    'MouseEvent',
+    'Node',
+    'Window',
+]
