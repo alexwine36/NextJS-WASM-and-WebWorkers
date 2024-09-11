@@ -50,6 +50,7 @@ rust:
   bins: 
     - cargo-nextest
     - wasm-pack
+    - trunk
 
   # List of rustup toolchain components to install and make available.
   components: 

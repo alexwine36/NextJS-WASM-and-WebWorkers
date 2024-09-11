@@ -10,7 +10,7 @@ use web_sys::{
 
 use crate::state::{State, COLORS, PEN_SIZES};
 
-const generic_box_styles: &str = "height: 50px; border-bottom: 1px solid #efefef; display: flex; align-items: center; justify-content: center;";
+const generic_box_styles: &str = "height: 50px; width: 50px; border-bottom: 1px solid #efefef; display: flex; align-items: center; justify-content: center;";
 
 enum UndoRedo {
     Undo,
@@ -24,12 +24,12 @@ pub fn init_toolbar(
 ) -> Result<(), JsValue> {
     let document = window().unwrap().document().unwrap();
 
-    for (_name, hex) in COLORS.iter() {
-        let el = get_color_block_element(hex.to_string(), &document, state)?;
+    for color in state.borrow().settings.colors.iter() {
+        let el = get_color_block_element(color.hex.clone(), &document, state)?;
         toolbar.append_child(&el)?;
     }
 
-    for size in PEN_SIZES.iter() {
+    for size in state.borrow().settings.pen_sizes.iter() {
         let el = get_pen_size_element(*size, &document, state)?;
         toolbar.append_child(&el)?;
     }
@@ -189,7 +189,7 @@ fn get_undo_redo_element(
                     .borrow_mut()
                     .add_undo_state(canvas_copy.to_data_url().unwrap());
                 state_copy.borrow_mut().redo()
-            },
+            }
         };
 
         let state_copy_2 = state_copy.clone();
