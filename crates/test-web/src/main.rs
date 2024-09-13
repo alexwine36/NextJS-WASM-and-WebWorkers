@@ -2,6 +2,7 @@
 
 use wasm_bindgen::JsCast;
 use wasm_draw::init_app;
+// mod lib;
 use web_sys::{window, Element, HtmlCanvasElement, HtmlElement};
 
 fn main() {

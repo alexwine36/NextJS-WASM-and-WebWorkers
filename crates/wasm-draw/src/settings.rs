@@ -36,7 +36,7 @@ impl Color {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 // #[wasm_bindgen]
 #[wasm_bindgen(getter_with_clone)]
 pub struct Settings {

@@ -1,3 +1,5 @@
 type: "library"
 
 tags: ['rust-wasm']
+
+# Add command `trunk serve --open`

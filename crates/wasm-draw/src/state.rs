@@ -7,30 +7,26 @@ pub static COLORS: [(&str, &str); 6] = [
     ("Yellow", "#FAE589"),
     ("White", "#FFFFFF"),
 ];
-
+use serde::{Deserialize, Serialize};
 static DEFAULT_COLOR: &str = COLORS[0].1;
-use crate::log;
 use crate::settings::Settings;
+use crate::{log, tool::ToolType};
 use utilities::console_log;
 use web_sys::{console, window, Element, HtmlCanvasElement, HtmlElement, MouseEvent};
 pub static PEN_SIZES: [f64; 4] = [1.0, 2.0, 4.0, 8.0];
 
 static DEFAULT_PEN_SIZE: f64 = PEN_SIZES[0];
 
-#[derive(Debug)]
-struct Dimensions {
-    width: u32,
-    height: u32,
-    x: f64,
-    y: f64,
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[wasm_bindgen]
+pub struct Dimensions {
+    pub width: u32,
+    pub height: u32,
+    pub x: f64,
+    pub y: f64,
 }
 
-fn get_dimensions(body: &HtmlElement) -> Dimensions {
-    // let client_width = body.client_width() as u32;
-    // let client_height = body.client_height() as u32;
-
-    // let width = min(max(client_width, 600), 3000);
-    // let height = min(max(client_height, 400), 2000);
+pub fn get_element_dimensions(body: &HtmlElement) -> Dimensions {
     let rect = body.get_bounding_client_rect();
 
     Dimensions {
@@ -39,10 +35,9 @@ fn get_dimensions(body: &HtmlElement) -> Dimensions {
         x: rect.left(),
         y: rect.top(),
     }
-    // (width, height)
 }
-
-#[derive(Debug)]
+#[wasm_bindgen]
+#[derive(Debug, Clone)]
 pub struct State {
     width: u32,
     height: u32,
@@ -53,14 +48,18 @@ pub struct State {
     pen_size: f64,
     undo_list: Vec<String>,
     redo_list: Vec<String>,
-    pub settings: Settings,
+    dimensions: Dimensions,
+    settings: Settings,
+    tool_type: ToolType,
 }
 
+#[wasm_bindgen]
 impl State {
     pub fn new(canvas_el: &HtmlCanvasElement, settings: Settings) -> State {
-        let dimensions = get_dimensions(&canvas_el);
+        let dimensions = get_element_dimensions(&canvas_el);
         console_log!("dimensions: {:?}", dimensions);
         State {
+            dimensions: dimensions.clone(),
             width: dimensions.width,
             height: dimensions.height,
             x: dimensions.x,
@@ -71,7 +70,16 @@ impl State {
             undo_list: vec![],
             redo_list: vec![],
             settings,
+            tool_type: ToolType::Rectangle,
         }
+    }
+
+    pub fn get_tool(&self) -> ToolType {
+        self.tool_type.clone()
+    }
+
+    pub fn set_tool(&mut self, tool: ToolType) {
+        self.tool_type = tool;
     }
 
     pub fn start_drawing(&mut self) {
@@ -119,12 +127,20 @@ impl State {
         self.y
     }
 
-    pub fn get_mouse_position(&self, event: MouseEvent) -> (f64, f64) {
-        let x = event.client_x() as f64 - self.get_x();
-        let y = event.client_y() as f64 - self.get_y();
-        // console_log!("event: {:?}", event.type_());
-        // console_log!("x: {}, y: {}", x, y);
-        (x, y)
+    pub fn get_dimensions(&self) -> Dimensions {
+        self.dimensions.clone()
+    }
+
+    pub fn set_dimensions(&mut self, dimensions: Dimensions) {
+        self.dimensions = dimensions.clone();
+        self.width = dimensions.width;
+        self.height = dimensions.height;
+        self.x = dimensions.x;
+        self.y = dimensions.y;
+    }
+
+    pub fn get_settings(&self) -> Settings {
+        self.settings.clone()
     }
 
     pub fn add_undo_state(&mut self, prev: String) {
@@ -142,5 +158,15 @@ impl State {
 
     pub fn redo(&mut self) -> Option<String> {
         self.redo_list.pop()
+    }
+}
+
+impl State {
+    pub fn get_mouse_position(&self, event: MouseEvent) -> (f64, f64) {
+        let x = event.client_x() as f64 - self.get_x();
+        let y = event.client_y() as f64 - self.get_y();
+        // console_log!("event: {:?}", event.type_());
+        // console_log!("x: {}, y: {}", x, y);
+        (x, y)
     }
 }

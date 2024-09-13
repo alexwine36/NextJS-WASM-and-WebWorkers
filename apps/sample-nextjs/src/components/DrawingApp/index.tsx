@@ -1,5 +1,15 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import { ToolType } from 'wasm-draw';
+
+const TOOLS: Record<ToolType, { name: string }> = {
+	[ToolType.Line]: { name: 'Line' },
+	[ToolType.Rectangle]: { name: 'Rectangle' },
+	// [ToolType.Circle]: { name: 'Circle' },
+	[ToolType.Pen]: { name: 'Pen' },
+	// [ToolType.Eraser]: { name: 'Eraser' },
+	// [ToolType.Fill]: { name: 'Fill' },
+};
 
 export const DrawingApp = () => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -9,8 +19,15 @@ export const DrawingApp = () => {
 	};
 
 	const runDrawingApp = async (canvas: HTMLCanvasElement) => {
-		const { init_app } = await loadWasm();
-		init_app(canvas);
+		const { App, ToolType } = await loadWasm();
+		// init_app(canvas);
+		const app = new App(canvas);
+		app.run();
+		// console.log(app.get_state().get_tool());
+		console.log(app.get_active_tool());
+		console.log(app.get_state());
+		app.set_active_tool(ToolType.Line);
+		console.log(app.get_active_tool());
 	};
 	useEffect(() => {
 		const canvas = canvasRef.current;
@@ -28,6 +45,7 @@ export const DrawingApp = () => {
 			style={{
 				width: '50vh',
 				height: '50vh',
+				border: '1px solid black',
 			}}
 			ref={canvasRef}
 		/>

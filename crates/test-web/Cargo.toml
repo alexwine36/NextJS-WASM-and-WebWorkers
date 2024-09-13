@@ -1,22 +1,14 @@
 [package]
-name = "wasm-draw"
+name = "test-web"
 version = "0.1.0"
 authors = ["Alex Wine <alexwine36@gmail.com>"]
 edition = "2021"
 
-[lib]
-crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 wasm-bindgen = { workspace = true }
-utilities = { path = "../utilities" }
+wasm-draw = { path = "../wasm-draw" }
 console_error_panic_hook = { version = "0.1.7" }
-js-sys = { workspace = true }
-serde = { version = "1.0", features = ["derive"] }
-serde-wasm-bindgen = "0.4"
-yew = { git = "https://github.com/yewstack/yew/", features = ["csr"] }
-rand = "0.8.5"
-
 
 [dev-dependencies]
 wasm-bindgen-test = { workspace = true }

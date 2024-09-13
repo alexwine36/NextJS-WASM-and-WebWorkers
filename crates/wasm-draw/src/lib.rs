@@ -7,8 +7,8 @@ use utilities::console_log;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
 use web_sys::{window, Element, HtmlCanvasElement, HtmlElement};
+mod app;
 mod canvas;
-
 mod draw_engine;
 mod settings;
 mod state;
@@ -37,45 +37,59 @@ pub fn init_app(canvas_el: HtmlCanvasElement) -> Result<(), JsValue> {
     // let w = canvas_el.width();
     // let h = canvas_el.height();
 
-    let mut settings = settings::Settings::new();
-    console_log!(
-        "colors {:?}, pen sizes {:?}",
-        settings.colors,
-        settings.pen_sizes
-    );
-    settings.add_color("something", "#aa00bb");
-    let state: Rc<RefCell<state::State>> =
-        Rc::new(RefCell::new(state::State::new(&canvas_el, settings)));
-    console_log!("state: {:?}", state);
+    let mut app = app::App::new(canvas_el);
+    // let state = app.get_dimensions();
+    // let measurement = app.start_drawing();
+    // let mut measurement = app.get_measurement();
+    // for _ in 0..100 {
+    //     let x = rand::thread_rng().gen_range(0.0..state.width.into());
+    //     let y = rand::thread_rng().gen_range(0.0..state.height.into());
+    //     measurement.borrow_mut().add_point(x, y);
+    // }
+    // console_log!("state: {:?}", state);
 
-    // console_log!("width: {:?}, height: {:?}", state.);
-    // let root = document.create_element("div")?;
-    // root.set_attribute("style", "min-height: 100%;");
+    app.run();
 
-    // body.append_child(&root);
+    // let mut settings = settings::Settings::new();
+    // console_log!(
+    //     "colors {:?}, pen sizes {:?}",
+    //     settings.colors,
+    //     settings.pen_sizes
+    // );
+    // settings.add_color("something", "#aa00bb");
+    // let state: Rc<RefCell<state::State>> =
+    //     Rc::new(RefCell::new(state::State::new(&canvas_el, settings)));
+    // console_log!("state: {:?}", state);
 
-    // let canvas_el = document
-    //     .create_element("canvas")?
-    //     .dyn_into::<HtmlCanvasElement>()?;
-    // canvas_el.set_width(w - TOOLBAR_WIDTH);
-    // canvas_el.set_height(h);
-    let rect = canvas_el.get_bounding_client_rect();
-    console_log!("rect: {:?}", rect.y());
-    // root.append_child(&canvas_el)?;
-    canvas::init_canvas(&canvas_el, &state)?;
+    // // console_log!("width: {:?}, height: {:?}", state.);
+    // // let root = document.create_element("div")?;
+    // // root.set_attribute("style", "min-height: 100%;");
 
-    let toolbar_el = document.create_element("div")?.dyn_into::<Element>()?;
-    toolbar_el.set_attribute(
-        "style",
-        "width:100%; border-left: 1px solid #efefef; display: flex;",
-    )?;
-    let parent = canvas_el
-        .parent_element()
-        .expect("Could not find parent element");
-    console_log!("parent: {:?}", parent);
-    body.append_child(&toolbar_el)?;
+    // // body.append_child(&root);
+
+    // // let canvas_el = document
+    // //     .create_element("canvas")?
+    // //     .dyn_into::<HtmlCanvasElement>()?;
+    // // canvas_el.set_width(w - TOOLBAR_WIDTH);
+    // // canvas_el.set_height(h);
+    // let rect = canvas_el.get_bounding_client_rect();
+    // console_log!("rect: {:?}", rect.y());
+    // // root.append_child(&canvas_el)?;
+
+    // canvas::init_canvas(&canvas_el, &state)?;
+
+    // let toolbar_el = document.create_element("div")?.dyn_into::<Element>()?;
+    // toolbar_el.set_attribute(
+    //     "style",
+    //     "width:100%; border-left: 1px solid #efefef; display: flex;",
+    // )?;
+    // let parent = canvas_el
+    //     .parent_element()
+    //     .expect("Could not find parent element");
+    // console_log!("parent: {:?}", parent);
     // body.append_child(&toolbar_el)?;
-    toolbar::init_toolbar(&toolbar_el, &canvas_el, &state);
+
+    // toolbar::init_toolbar(&toolbar_el, &canvas_el, &state);
 
     Ok(())
 }

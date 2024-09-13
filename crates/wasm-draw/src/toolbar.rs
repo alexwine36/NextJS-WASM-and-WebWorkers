@@ -24,12 +24,12 @@ pub fn init_toolbar(
 ) -> Result<(), JsValue> {
     let document = window().unwrap().document().unwrap();
 
-    for color in state.borrow().settings.colors.iter() {
+    for color in state.borrow().get_settings().colors.iter() {
         let el = get_color_block_element(color.hex.clone(), &document, state)?;
         toolbar.append_child(&el)?;
     }
 
-    for size in state.borrow().settings.pen_sizes.iter() {
+    for size in state.borrow().get_settings().pen_sizes.iter() {
         let el = get_pen_size_element(*size, &document, state)?;
         toolbar.append_child(&el)?;
     }
