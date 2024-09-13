@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 use wasm_bindgen::prelude::*;
 pub static COLORS: [(&str, &str); 6] = [
     ("Black", "#000000"),
@@ -10,12 +8,10 @@ pub static COLORS: [(&str, &str); 6] = [
     ("White", "#FFFFFF"),
 ];
 
-static DEFAULT_COLOR: &str = COLORS[0].1;
-use crate::log;
-use js_sys::Array;
+pub static DEFAULT_COLOR: &str = COLORS[0].1;
+
 use serde::{Deserialize, Serialize};
-use utilities::console_log;
-use web_sys::{console, js_sys, window, Element, HtmlCanvasElement, HtmlElement, MouseEvent};
+
 pub static PEN_SIZES: [f64; 4] = [1.0, 2.0, 4.0, 8.0];
 
 static DEFAULT_PEN_SIZE: f64 = PEN_SIZES[0];
@@ -47,10 +43,16 @@ pub struct Settings {
     pub tools: Vec<String>,
 }
 
-#[wasm_bindgen]
+// #[wasm_bindgen]
+impl Default for Settings {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl Settings {
-    #[wasm_bindgen(constructor)]
-    pub fn new() -> Self {
+    // #[wasm_bindgen(constructor)]
+    pub fn new() -> Settings {
         let colors = COLORS
             .iter()
             .map(|(name, hex)| Color {
@@ -59,7 +61,7 @@ impl Settings {
             })
             .collect();
 
-        Self {
+        Settings {
             colors,
             pen_sizes: PEN_SIZES.to_vec(),
             tools: vec!["pen".to_string(), "line".to_string(), "circle".to_string()],

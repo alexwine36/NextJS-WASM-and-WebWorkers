@@ -1,12 +1,7 @@
 extern crate wasm_bindgen;
 
-use std::cell::RefCell;
-use std::cmp::{max, min};
-use std::rc::Rc;
-use utilities::console_log;
 use wasm_bindgen::prelude::*;
-use wasm_bindgen::JsCast;
-use web_sys::{window, Element, HtmlCanvasElement, HtmlElement};
+use web_sys::{window, HtmlCanvasElement};
 mod app;
 mod canvas;
 mod draw_engine;

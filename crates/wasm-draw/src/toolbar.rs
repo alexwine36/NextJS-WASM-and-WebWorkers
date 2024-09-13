@@ -8,7 +8,7 @@ use web_sys::{
     HtmlImageElement,
 };
 
-use crate::state::{State, COLORS, PEN_SIZES};
+use crate::state::{State};
 
 const generic_box_styles: &str = "height: 50px; width: 50px; border-bottom: 1px solid #efefef; display: flex; align-items: center; justify-content: center;";
 
@@ -92,7 +92,7 @@ fn get_pen_size_element(
     let state_copy = state.clone();
 
     let handle_click = Closure::wrap(Box::new(move || {
-        state_copy.borrow_mut().update_pen_size(size as f64);
+        state_copy.borrow_mut().update_pen_size(size);
     }) as Box<dyn FnMut()>);
 
     el.add_event_listener_with_callback("click", handle_click.as_ref().unchecked_ref())?;

@@ -4,15 +4,13 @@ use crate::state::get_element_dimensions;
 use crate::state::Dimensions;
 use crate::state::State;
 use crate::tool::ToolType;
-use serde::{Deserialize, Serialize};
 
 use std::cell::RefCell;
-use std::cmp::{max, min};
 use std::rc::Rc;
 use utilities::console_log;
 use wasm_bindgen::prelude::*;
 use web_sys::{
-    console, window, CanvasRenderingContext2d, Element, HtmlCanvasElement, HtmlElement, MouseEvent,
+    window, CanvasRenderingContext2d, HtmlCanvasElement, MouseEvent,
 };
 
 use crate::tool::Measurement;

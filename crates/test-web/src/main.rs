@@ -3,7 +3,7 @@
 use wasm_bindgen::JsCast;
 use wasm_draw::init_app;
 // mod lib;
-use web_sys::{window, Element, HtmlCanvasElement, HtmlElement};
+use web_sys::{window, HtmlCanvasElement};
 
 fn main() {
     console_error_panic_hook::set_once();

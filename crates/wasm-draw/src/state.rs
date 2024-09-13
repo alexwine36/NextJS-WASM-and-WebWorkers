@@ -1,18 +1,11 @@
 use wasm_bindgen::prelude::*;
-pub static COLORS: [(&str, &str); 6] = [
-    ("Black", "#000000"),
-    ("Green", "#3DC06C"),
-    ("Red", "#FF0000"),
-    ("Blue", "#4F8DE4"),
-    ("Yellow", "#FAE589"),
-    ("White", "#FFFFFF"),
-];
+
 use serde::{Deserialize, Serialize};
-static DEFAULT_COLOR: &str = COLORS[0].1;
-use crate::settings::Settings;
+
+use crate::settings::{Settings, DEFAULT_COLOR};
 use crate::{log, tool::ToolType};
 use utilities::console_log;
-use web_sys::{console, window, Element, HtmlCanvasElement, HtmlElement, MouseEvent};
+use web_sys::{HtmlCanvasElement, HtmlElement, MouseEvent};
 pub static PEN_SIZES: [f64; 4] = [1.0, 2.0, 4.0, 8.0];
 
 static DEFAULT_PEN_SIZE: f64 = PEN_SIZES[0];
@@ -56,7 +49,7 @@ pub struct State {
 #[wasm_bindgen]
 impl State {
     pub fn new(canvas_el: &HtmlCanvasElement, settings: Settings) -> State {
-        let dimensions = get_element_dimensions(&canvas_el);
+        let dimensions = get_element_dimensions(canvas_el);
         console_log!("dimensions: {:?}", dimensions);
         State {
             dimensions: dimensions.clone(),

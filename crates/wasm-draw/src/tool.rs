@@ -1,14 +1,6 @@
-use crate::log;
-use crate::settings;
-use crate::state::Dimensions;
-use crate::state::State;
 use serde::{Deserialize, Serialize};
-use std::cell::RefCell;
-use std::cmp::{max, min};
-use std::rc::Rc;
-use utilities::console_log;
 use wasm_bindgen::prelude::*;
-use web_sys::{console, window, CanvasRenderingContext2d, Element, HtmlCanvasElement, HtmlElement};
+use web_sys::{CanvasRenderingContext2d};
 
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[wasm_bindgen]
@@ -56,12 +48,10 @@ impl Measurement {
     }
 
     pub fn finish(&mut self) {
-        console_log!("finishing measurement");
         if self.tool != ToolType::Pen && self.points.len() > 2 {
             let last_point = self.points.last().unwrap();
             let first_point = self.points.first().unwrap();
             self.points = vec![first_point.clone(), last_point.clone()];
-            console_log!("finished measurement: {:?}", self);
         }
     }
 
@@ -98,5 +88,25 @@ impl Measurement {
         }
 
         context.stroke();
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use rand::Rng;
+
+    #[test]
+    fn it_works() {
+        let mut measurement = Measurement::new(&"red".to_string(), 2.0, ToolType::Rectangle);
+
+        for _ in 0..100 {
+            let x = rand::thread_rng().gen_range(0.0..100.0);
+            let y = rand::thread_rng().gen_range(0.0..100.0);
+            measurement.add_point(x, y);
+        }
+        assert_eq!(measurement.points.len(), 100);
+        measurement.finish();
+        assert_eq!(measurement.points.len(), 2);
     }
 }
