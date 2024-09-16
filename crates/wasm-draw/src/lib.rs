@@ -6,7 +6,6 @@ pub mod app;
 mod settings;
 mod state;
 pub mod tool;
-mod toolbar;
 
 #[wasm_bindgen]
 extern "C" {
