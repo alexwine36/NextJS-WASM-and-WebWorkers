@@ -2,7 +2,6 @@
 
 import { useAtom } from 'jotai';
 import { useComparisons } from '../../hooks/use-comparisons';
-import { DrawingApp } from '../DrawingApp';
 import { RunnableComparisonCard } from '../RunnableComparisonCard';
 import styles from './index.module.css';
 export const OptionGrid = () => {
@@ -11,7 +10,6 @@ export const OptionGrid = () => {
 	const [optionsAtoms] = useAtom(optionsAtomsAtom);
 	return (
 		<>
-			<DrawingApp />
 			<div>
 				<button onClick={handleRunAll}>Run All</button>
 				<div className={styles.grid}>

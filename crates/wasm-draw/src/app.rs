@@ -9,9 +9,7 @@ use std::cell::RefCell;
 use std::rc::Rc;
 use utilities::console_log;
 use wasm_bindgen::prelude::*;
-use web_sys::{
-    window, CanvasRenderingContext2d, HtmlCanvasElement, MouseEvent,
-};
+use web_sys::{window, CanvasRenderingContext2d, HtmlCanvasElement, MouseEvent};
 
 use crate::tool::Measurement;
 
@@ -68,6 +66,23 @@ impl App {
         self.state.borrow().get_tool()
     }
 
+    pub fn get_colors(&self) -> Vec<String> {
+        self.state
+            .borrow()
+            .get_settings()
+            .colors
+            .iter()
+            .map(|c| c.hex.clone())
+            .collect()
+    }
+
+    pub fn get_active_color(&self) -> String {
+        self.state.borrow().get_color()
+    }
+    pub fn set_active_color(&self, color: String) {
+        self.state.borrow_mut().update_color(color);
+    }
+
     pub fn set_active_tool(&self, tool: ToolType) {
         self.state.borrow_mut().set_tool(tool);
     }
@@ -81,11 +96,7 @@ impl App {
         );
 
         for measurement in self.measurements.borrow().iter() {
-            // console_log!(
-            //     "drawing measurement with {} points",
-            //     measurement.borrow().points.len()
-            // );
-            measurement.borrow().draw(&self.context);
+            measurement.borrow_mut().draw(&self.context);
         }
     }
 
@@ -98,10 +109,6 @@ impl App {
             let window = window().expect("Could not find `window`");
             let self_copy = self.clone();
             let handle_window_resize = Closure::wrap(Box::new(move || {
-                // let dimensions = get_element_dimensions(&self_copy.canvas);
-                // self_copy.canvas.set_width(dimensions.width);
-                // self_copy.canvas.set_height(dimensions.height);
-                // self_copy.state.borrow_mut().set_dimensions(dimensions);
                 self_copy.initialize_canvas();
                 self_copy.draw();
             }) as Box<dyn FnMut()>);
@@ -177,12 +184,13 @@ impl App {
             let handle_mouse_up = Closure::wrap(Box::new(move |event: MouseEvent| {
                 let (new_x, new_y) = state_copy.borrow().get_mouse_position(event);
                 state_copy.borrow_mut().stop_drawing();
-                self_copy.draw();
+
                 let m = measurement.borrow().clone();
                 if let Some(measure) = m {
                     measure.borrow_mut().add_point(new_x, new_y);
                     measure.borrow_mut().finish()
                 }
+                self_copy.draw();
                 // measurement.borrow_mut().finish();
                 *measurement.borrow_mut() = None;
             }) as Box<dyn FnMut(_)>);

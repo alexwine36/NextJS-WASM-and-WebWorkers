@@ -2,15 +2,11 @@ extern crate wasm_bindgen;
 
 use wasm_bindgen::prelude::*;
 use web_sys::{window, HtmlCanvasElement};
-mod app;
-mod canvas;
-mod draw_engine;
+pub mod app;
 mod settings;
 mod state;
-mod tool;
+pub mod tool;
 mod toolbar;
-
-static TOOLBAR_WIDTH: u32 = 50;
 
 #[wasm_bindgen]
 extern "C" {

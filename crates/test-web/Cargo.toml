@@ -9,6 +9,8 @@ edition = "2021"
 wasm-bindgen = { workspace = true }
 wasm-draw = { path = "../wasm-draw" }
 console_error_panic_hook = { version = "0.1.7" }
+leptos = { version = "0.6.15", features = ["csr"] }
+rand = "0.8.5"
 
 [dev-dependencies]
 wasm-bindgen-test = { workspace = true }

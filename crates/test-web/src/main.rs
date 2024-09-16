@@ -1,9 +1,36 @@
 // mod lib;
 
 use wasm_bindgen::JsCast;
+use wasm_draw::app::App;
 use wasm_draw::init_app;
+use wasm_draw::tool::ToolType;
 // mod lib;
+use leptos::*;
+use rand::Rng;
+use test_web::Layout;
 use web_sys::{window, HtmlCanvasElement};
+
+#[component]
+fn App() -> impl IntoView {
+    let (count, set_count) = create_signal(0);
+    // let app = ;
+    // provide_context(App::new(canvas_el));
+    // let app = expect_context::<RwSignal<App>>();
+    view! {
+        <Layout />
+        <button
+            on:click=move |_| {
+                // on stable, this is set_count.set(3);
+                set_count.set(3);
+            }
+        >
+            "Click me: "
+            // on stable, this is move || count.get();
+            // {move || count()}
+            {count}
+        </button>
+    }
+}
 
 fn main() {
     console_error_panic_hook::set_once();
@@ -33,5 +60,24 @@ fn main() {
     body.append_child(&canvas_el)
         .expect("Failed to append canvas");
 
-    init_app(canvas_el).expect("Failed to initialize app");
+    // mount_to_body(|| view! { <App  /> });
+
+    // init_app(canvas_el).expect("Failed to initialize app");
+    let mut app = App::new(canvas_el);
+    app.set_active_tool(ToolType::Rectangle);
+    let state = app.get_dimensions();
+
+    for _ in 0..100 {
+        let measurement = app.start_drawing();
+        for _ in 0..5 {
+            let x = rand::thread_rng().gen_range(0.0..state.width.into());
+            let y = rand::thread_rng().gen_range(0.0..state.height.into());
+
+            measurement.borrow_mut().add_point(x, y);
+        }
+    }
+
+    app.run();
+    app.draw();
+    app.set_active_tool(ToolType::Fill);
 }
