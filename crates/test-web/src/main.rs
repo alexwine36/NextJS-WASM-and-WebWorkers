@@ -45,6 +45,14 @@ fn main() {
     body.append_child(text_el.as_ref())
         .expect("Failed to append text");
 
+    let div_el = document.create_element("div").unwrap();
+    div_el
+        .set_attribute(
+            "style",
+            "margin: 50px; width: 50vw; height: 50vh; border: 1px solid black; resize: both; overflow: hidden;",
+        )
+        .unwrap();
+
     let canvas_el: HtmlCanvasElement = document
         .create_element("canvas")
         .unwrap()
@@ -52,12 +60,11 @@ fn main() {
         .unwrap();
 
     canvas_el
-        .set_attribute(
-            "style",
-            "margin: 50px; width: 50vw; height: 50vh; border: 1px solid black;",
-        )
+        .set_attribute("style", "width: 100%; height: 100%;")
         .unwrap();
-    body.append_child(&canvas_el)
+    body.append_child(&div_el).expect("Failed to append canvas");
+    div_el
+        .append_child(&canvas_el)
         .expect("Failed to append canvas");
 
     // mount_to_body(|| view! { <App  /> });

@@ -39,4 +39,5 @@ features = [
     'DomRect',
     'Element',
     'ImageData',
+    'ResizeObserver',
 ]

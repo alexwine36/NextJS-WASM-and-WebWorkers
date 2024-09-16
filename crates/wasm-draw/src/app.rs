@@ -9,6 +9,7 @@ use std::cell::RefCell;
 use std::rc::Rc;
 use utilities::console_log;
 use wasm_bindgen::prelude::*;
+use web_sys::ResizeObserver;
 use web_sys::{window, CanvasRenderingContext2d, HtmlCanvasElement, MouseEvent};
 
 use crate::tool::Measurement;
@@ -47,7 +48,7 @@ impl App {
     }
 
     pub fn initialize_canvas(&self) {
-        console_log!("initializing canvas");
+        // console_log!("initializing canvas");
         let dimensions = get_element_dimensions(&self.canvas);
         self.canvas.set_width(dimensions.width);
         self.canvas.set_height(dimensions.height);
@@ -106,19 +107,19 @@ impl App {
             Rc::new(RefCell::new(None));
 
         {
-            let window = window().expect("Could not find `window`");
             let self_copy = self.clone();
             let handle_window_resize = Closure::wrap(Box::new(move || {
                 self_copy.initialize_canvas();
                 self_copy.draw();
             }) as Box<dyn FnMut()>);
 
-            window
-                .add_event_listener_with_callback(
-                    "resize",
-                    handle_window_resize.as_ref().unchecked_ref(),
-                )
-                .unwrap();
+            let parent = self.canvas.clone().parent_element().unwrap();
+
+            let resize_observer =
+                ResizeObserver::new(handle_window_resize.as_ref().unchecked_ref())
+                    .expect("Could not create ResizeObserver");
+
+            resize_observer.observe(&parent);
 
             handle_window_resize.forget();
         }

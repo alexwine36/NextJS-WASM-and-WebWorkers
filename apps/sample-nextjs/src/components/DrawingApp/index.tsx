@@ -25,14 +25,23 @@ export const DrawingApp = () => {
 					</button>
 				))}
 			</div>
-			<canvas
+			<div
 				style={{
 					width: '75vw',
 					height: '50vh',
 					border: '1px solid black',
+					resize: 'both',
+					overflow: 'hidden',
 				}}
-				ref={canvasRef}
-			/>
+			>
+				<canvas
+					style={{
+						width: '100%',
+						height: '100%',
+					}}
+					ref={canvasRef}
+				/>
+			</div>
 		</div>
 	);
 };

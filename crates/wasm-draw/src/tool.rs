@@ -1,4 +1,4 @@
-use std::collections::VecDeque;
+use std::f64::consts::PI;
 
 use crate::log;
 use crate::state::get_element_dimensions;
@@ -98,37 +98,43 @@ impl Measurement {
     }
 
     fn draw_quadratic_curve(&self, context: &CanvasRenderingContext2d) {
-        if self.points.len() < 3 {
-            return;
-        }
-        context.set_fill_style(&JsValue::from_str(&self.color));
         context.set_stroke_style(&JsValue::from_str(&self.color));
+        context.set_fill_style(&JsValue::from_str(&self.color));
         context.set_line_width(self.pen_size);
+        context.set_line_join("round");
+        context.set_line_cap("round");
         context.begin_path();
-        // let first_point = self.points.first().unwrap();
-        // context.move_to(first_point.x, first_point.y);
-        // let last_point = self.points.last().unwrap();
-        // context.quadratic_curve_to(
-        //     self.points[1].x,
-        //     self.points[1].y,
-        //     last_point.x,
-        //     last_point.y,
-        // );
 
-        for point in self.points.iter().skip(1) {
-            context.line_to(point.x, point.y);
+        if self.points.len() < 3 {
+            let b = self.points.first().unwrap();
+            context
+                .arc(b.x, b.y, self.pen_size / 2.0, PI * 2.0, 0.0)
+                .unwrap();
+        } else {
+            let first = self.points.first().unwrap();
+            let points = self.points.clone();
+            context.move_to(first.x, first.y);
+
+            for i in 1..self.points.len() - 2 {
+                // let a = self.points[i - 1];
+                let a = &points[i];
+                let c = &points[i + 1];
+
+                let b: Point = Point::new((a.x + c.x) / 2.0, (a.y + c.y) / 2.0);
+                // context.move_to(a.x, a.y);
+                context.quadratic_curve_to(a.x, a.y, b.x, b.y);
+            }
+            let second_last = &points[points.len() - 2];
+            let last = self.points.last().unwrap();
+
+            context.quadratic_curve_to(second_last.x, second_last.y, last.x, last.y);
+            context.stroke();
         }
-        // context.line_to(x, y);
-        context.close_path();
 
         context.fill();
     }
 
     pub fn draw(&mut self, context: &CanvasRenderingContext2d) {
-        // console_log!("drawing measurement {:?}", self);
-        // if self.points.len() < 2 {
-        //     return;
-        // }
         context.set_stroke_style(&JsValue::from_str(&self.color));
         context.set_line_width(self.pen_size);
         context.begin_path();
@@ -156,17 +162,15 @@ impl Measurement {
             }
             ToolType::Fill => {
                 if self.processed == true {
-                    console_log!("processed: {:?}", self.processed);
                     self.draw_quadratic_curve(context)
                 } else if self.completed == true && self.processed == false {
-                    console_log!("filling");
                     let canvas = context.canvas().unwrap();
                     let dimensions = get_element_dimensions(&canvas);
                     let mut img_data = context
                         .get_image_data(0.0, 0.0, dimensions.width.into(), dimensions.height.into())
                         .unwrap();
 
-                    let start: SimplePoint = self.points.first().unwrap().clone().into();
+                    let start: SimplePoint = self.points.last().unwrap().clone().into();
 
                     let res = flood_fill(
                         &mut img_data,
@@ -183,8 +187,7 @@ impl Measurement {
                         .collect();
                     self.draw_quadratic_curve(context);
                 } else {
-                    console_log!("completed: {:?}", self.completed);
-                    console_log!("processed: {:?}", self.processed);
+                    return;
                 }
             }
         }
@@ -285,8 +288,7 @@ fn flood_fill(
 
             if got_it {
                 path.push(SimplePoint { x, y });
-                // console_log!("path: {:?}", path);
-                // console_log!("iteration count: {:?}", iteration_count);
+
                 break;
             }
         }
