@@ -1,34 +1,20 @@
 'use client';
 import { useRef } from 'react';
 import { useDrawingApp } from '../../hooks/use-drawing-app';
+import { Toolbar } from './Toolbar';
 
 export const DrawingApp = () => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 
-	const { tools, colors } = useDrawingApp(canvasRef);
+	const { tools, colors, penSizes } = useDrawingApp(canvasRef);
 
 	return (
-		<div>
-			<div>
-				{tools.map(({ name, onClick, active }) => (
-					<button key={name} onClick={onClick} style={{ fontWeight: active ? 'bold' : 'normal' }}>
-						{name}
-					</button>
-				))}
-				{colors.map((color) => (
-					<button
-						key={color.color}
-						onClick={() => color.onClick()}
-						style={{ backgroundColor: color.color, color: color.color }}
-					>
-						{color.color}
-					</button>
-				))}
-			</div>
+		<>
+			<Toolbar tools={tools} colors={colors} penSizes={penSizes} />
 			<div
 				style={{
-					width: '75vw',
-					height: '50vh',
+					width: '100%',
+					height: '100%',
 					border: '1px solid black',
 					resize: 'both',
 					overflow: 'hidden',
@@ -42,6 +28,6 @@ export const DrawingApp = () => {
 					ref={canvasRef}
 				/>
 			</div>
-		</div>
+		</>
 	);
 };

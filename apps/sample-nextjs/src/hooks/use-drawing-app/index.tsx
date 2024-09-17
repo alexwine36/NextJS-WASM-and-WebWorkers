@@ -13,6 +13,8 @@ export const useDrawingApp = (canvasRef: RefObject<HTMLCanvasElement>) => {
 	const [activeTool, setActiveTool] = useState<ToolType>(ToolType.Line);
 	const [colors, setColors] = useState<string[]>([]);
 	const [activeColor, setActiveColor] = useState<string>('black');
+	const [penSizes, setPenSizes] = useState<number[]>([]);
+	const [activePenSize, setActivePenSize] = useState<number>(1);
 	const loadWasm = async () => {
 		const wasmModule = await import('wasm-draw');
 		return wasmModule;
@@ -26,7 +28,10 @@ export const useDrawingApp = (canvasRef: RefObject<HTMLCanvasElement>) => {
 		setApp(app);
 		// console.log(app.get_colors());
 		setColors(app.get_colors());
+
 		setActiveColor(app.get_active_color());
+		setPenSizes(Array.from(app.get_pen_sizes()));
+		setActivePenSize(app.get_pen_sizes()[0]);
 		app.run();
 	};
 
@@ -65,10 +70,24 @@ export const useDrawingApp = (canvasRef: RefObject<HTMLCanvasElement>) => {
 		}));
 	}, [colors, activeColor]);
 
+	const penSizesList = useMemo(() => {
+		return penSizes.map((size) => ({
+			size,
+			onClick: () => {
+				app?.set_active_pen_size(size);
+				setActivePenSize(size);
+			},
+			active: activePenSize === size,
+		}));
+	}, [penSizes, activePenSize]);
+
 	return {
 		app,
 		tools,
 		setTool,
 		colors: colorList,
+		penSizes: penSizesList,
 	};
 };
+
+export type UseDrawingAppReturn = ReturnType<typeof useDrawingApp>;

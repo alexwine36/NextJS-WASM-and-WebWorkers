@@ -11,9 +11,11 @@ const DrawingApp = dynamic(
 export default async function Draw() {
 	return (
 		<div className={styles.layout}>
-			<h1>Draw</h1>
-			<p>This is the Draw page</p>
-			<DrawingApp />
+			<div className={styles.wrapper}>
+				<h1>Draw</h1>
+
+				<DrawingApp />
+			</div>
 		</div>
 	);
 }

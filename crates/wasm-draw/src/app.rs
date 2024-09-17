@@ -67,6 +67,10 @@ impl App {
         self.state.borrow().get_tool()
     }
 
+    pub fn set_active_tool(&self, tool: ToolType) {
+        self.state.borrow_mut().set_tool(tool);
+    }
+
     pub fn get_colors(&self) -> Vec<String> {
         self.state
             .borrow()
@@ -84,8 +88,16 @@ impl App {
         self.state.borrow_mut().update_color(color);
     }
 
-    pub fn set_active_tool(&self, tool: ToolType) {
-        self.state.borrow_mut().set_tool(tool);
+    pub fn get_pen_sizes(&self) -> Vec<f64> {
+        self.state.borrow().get_settings().pen_sizes.clone()
+    }
+
+    pub fn get_active_pen_size(&self) -> f64 {
+        self.state.borrow().get_pen_size()
+    }
+
+    pub fn set_active_pen_size(&self, pen_size: f64) {
+        self.state.borrow_mut().update_pen_size(pen_size);
     }
 
     pub fn draw(&self) {
@@ -192,7 +204,7 @@ impl App {
                     measure.borrow_mut().finish()
                 }
                 self_copy.draw();
-                // measurement.borrow_mut().finish();
+
                 *measurement.borrow_mut() = None;
             }) as Box<dyn FnMut(_)>);
 
