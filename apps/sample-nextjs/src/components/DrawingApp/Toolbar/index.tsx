@@ -11,11 +11,14 @@ type ToolbarProps = {
 export const Toolbar = (props: ToolbarProps) => {
 	const { tools, colors, penSizes } = props;
 
+	const activeTool = tools.find((tool) => tool.active);
+	const activeColor = colors.find((color) => color.active);
+	const activePenSize = penSizes.find((penSize) => penSize.active);
 	return (
 		<div className={styles.toolbar}>
 			<div className={styles.dropdown}>
 				<button className={styles.dropbtn} type="button">
-					Tools
+					Tools <b>({activeTool?.name})</b>
 				</button>
 				<menu className={styles.dropdownContent}>
 					{tools.map(({ name, onClick, active }) => (
@@ -28,6 +31,14 @@ export const Toolbar = (props: ToolbarProps) => {
 			<div className={styles.dropdown}>
 				<button className={styles.dropbtn} type="button">
 					Colors
+					<b
+						style={{
+							backgroundColor: activeColor?.color,
+							width: '1em',
+							height: '1em',
+							display: 'inline-block',
+						}}
+					/>
 				</button>
 				<menu className={styles.dropdownContent}>
 					{colors.map((color) => (
@@ -47,7 +58,7 @@ export const Toolbar = (props: ToolbarProps) => {
 			</div>
 			<div className={styles.dropdown}>
 				<button className={styles.dropbtn} type="button">
-					Pen Sizes
+					Pen Sizes <b>({activePenSize?.size})</b>
 				</button>
 				<menu className={styles.dropdownContent}>
 					{penSizes.map(({ size, onClick, active }) => (

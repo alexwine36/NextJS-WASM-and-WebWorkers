@@ -10,10 +10,11 @@ export const DrawingApp = () => {
 
 	return (
 		<>
-			<Toolbar tools={tools} colors={colors} penSizes={penSizes} />
+			<Toolbar colors={colors} penSizes={penSizes} tools={tools} />
 			<div
 				style={{
 					width: '100%',
+					// maxHeight: '100%',
 					height: '100%',
 					border: '1px solid black',
 					resize: 'both',
@@ -21,11 +22,11 @@ export const DrawingApp = () => {
 				}}
 			>
 				<canvas
+					ref={canvasRef}
 					style={{
 						width: '100%',
-						height: '100%',
+						height: 'max-content',
 					}}
-					ref={canvasRef}
 				/>
 			</div>
 		</>

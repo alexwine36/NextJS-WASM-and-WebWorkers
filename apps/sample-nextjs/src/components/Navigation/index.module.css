@@ -1,0 +1,19 @@
+
+.navigation {
+    background-color: rgb(var(--background-start-rgb));
+    width: 100%;
+}
+
+
+.navigation ul {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    padding: 1rem 0;
+    list-style-type: none;
+}
+
+.navigation ul li {
+    padding-left: 1em;
+    font-weight: bold;
+}

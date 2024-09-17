@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import styles from './page.module.css';
 
 const DrawingApp = dynamic(
 	() => import('../../src/components/DrawingApp').then((mod) => mod.DrawingApp),
@@ -10,12 +9,12 @@ const DrawingApp = dynamic(
 
 export default async function Draw() {
 	return (
-		<div className={styles.layout}>
-			<div className={styles.wrapper}>
-				<h1>Draw</h1>
+		// <div className={styles.layout}>
+		<>
+			<h1>Draw</h1>
 
-				<DrawingApp />
-			</div>
-		</div>
+			<DrawingApp />
+		</>
+		// </div>
 	);
 }
