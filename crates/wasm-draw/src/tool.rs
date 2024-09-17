@@ -1,9 +1,7 @@
 use std::f64::consts::PI;
 
-use crate::log;
 use crate::state::get_element_dimensions;
 use serde::{Deserialize, Serialize};
-use utilities::console_log;
 use wasm_bindgen::prelude::*;
 
 use web_sys::{CanvasRenderingContext2d, ImageData};
@@ -43,11 +41,11 @@ impl SimplePoint {
     }
 }
 
-impl Into<SimplePoint> for Point {
-    fn into(self) -> SimplePoint {
+impl From<Point> for SimplePoint {
+    fn from(val: Point) -> Self {
         SimplePoint {
-            x: self.x as u32,
-            y: self.y as u32,
+            x: val.x as u32,
+            y: val.y as u32,
         }
     }
 }
@@ -161,9 +159,9 @@ impl Measurement {
                 );
             }
             ToolType::Fill => {
-                if self.processed == true {
+                if self.processed {
                     self.draw_quadratic_curve(context)
-                } else if self.completed == true && self.processed == false {
+                } else if self.completed && !self.processed {
                     let canvas = context.canvas().unwrap();
                     let dimensions = get_element_dimensions(&canvas);
                     let mut img_data = context
@@ -174,8 +172,8 @@ impl Measurement {
 
                     let res = flood_fill(
                         &mut img_data,
-                        dimensions.width.into(),
-                        dimensions.height.into(),
+                        dimensions.width,
+                        dimensions.height,
                         start.x,
                         start.y,
                     );
@@ -293,7 +291,7 @@ fn flood_fill(
             }
         }
     }
-    return path;
+    path
     // Call draw_quadratic_curve (simplified for this example)
     // draw_quadratic_curve(path, canvas, fill_color);
 }

@@ -2,7 +2,6 @@
 
 use wasm_bindgen::JsCast;
 use wasm_draw::app::App;
-use wasm_draw::init_app;
 use wasm_draw::tool::ToolType;
 // mod lib;
 use leptos::*;

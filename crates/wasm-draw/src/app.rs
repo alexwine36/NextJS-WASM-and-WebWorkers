@@ -1,4 +1,3 @@
-use crate::log;
 use crate::settings;
 use crate::state::get_element_dimensions;
 use crate::state::Dimensions;
@@ -7,10 +6,9 @@ use crate::tool::ToolType;
 
 use std::cell::RefCell;
 use std::rc::Rc;
-use utilities::console_log;
 use wasm_bindgen::prelude::*;
 use web_sys::ResizeObserver;
-use web_sys::{window, CanvasRenderingContext2d, HtmlCanvasElement, MouseEvent};
+use web_sys::{CanvasRenderingContext2d, HtmlCanvasElement, MouseEvent};
 
 use crate::tool::Measurement;
 
