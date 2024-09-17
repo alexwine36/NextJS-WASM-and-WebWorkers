@@ -1,0 +1,37 @@
+[package]
+name = "test-web"
+version = "0.1.0"
+authors = ["Alex Wine <alexwine36@gmail.com>"]
+edition = "2021"
+
+
+[dependencies]
+wasm-bindgen = { workspace = true }
+wasm-draw = { path = "../wasm-draw" }
+console_error_panic_hook = { version = "0.1.7" }
+leptos = { version = "0.6.15", features = ["csr"] }
+rand = "0.8.5"
+
+[dev-dependencies]
+wasm-bindgen-test = { workspace = true }
+
+
+[dependencies.web-sys]
+version = "0.3.4"
+features = [
+    'CanvasRenderingContext2d',
+    'console',
+    'CssStyleDeclaration',
+    'Document',
+    'Element',
+    'EventTarget',
+    'HtmlCanvasElement',
+    'HtmlElement',
+    'HtmlImageElement',
+    'MouseEvent',
+    'EventListener',
+    'Node',
+    'Window',
+    'DomRect',
+    'Element',
+]

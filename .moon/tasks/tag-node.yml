@@ -62,21 +62,11 @@ tasks:
     local: true
 
   # https://moonrepo.dev/docs/guides/examples/eslint
-  lint:
+  lint: 
     command:
       - 'eslint'
-      # - '--ext'
-      # - '.ts,.tsx,.cts,.mts,.js,.jsx,.cjs,.mjs'
-      # - '--fix'
-      # - '--report-unused-disable-directives'
-      # - '--no-error-on-unmatched-pattern'
-      # - '--exit-on-fatal-error'
-      # - '--ignore-path'
-      # - '@in(2)'
-      # - "-c" 
-      # - "eslint.config.mjs"
       - '.'
-    inputs:
+    inputs: &lint
       - '*.config.*'
       - '**/.eslintrc.*'
       - '/.eslintrc.*'
@@ -86,6 +76,14 @@ tasks:
       - '@group(app)'
       - '@globs(sources)'
       - '@globs(tests)'
+
+  lint-fix: 
+    command:
+      - 'eslint'
+      - '.'
+      - '--fix'
+    inputs: *lint
+    local: true
 
   # https://moonrepo.dev/docs/guides/examples/jest
   test:

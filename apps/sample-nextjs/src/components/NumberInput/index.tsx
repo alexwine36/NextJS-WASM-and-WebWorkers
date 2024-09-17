@@ -13,7 +13,7 @@ export const NumberInput = () => {
 	return (
 		<div className={styles.panel}>
 			<label htmlFor="value">Value:</label>
-			<input type="number" id="value" value={value} onChange={handleChange} />
+			<input id="value" onChange={handleChange} type="number" value={value} />
 		</div>
 	);
 };

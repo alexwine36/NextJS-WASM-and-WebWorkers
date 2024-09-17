@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable unused-imports/no-unused-vars */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 type Parameter<T> = T extends (arg: infer T) => any ? T : never;
 

@@ -10,4 +10,6 @@ lib/
 mjs/
 umd/
 
+dist/
+
 .next/

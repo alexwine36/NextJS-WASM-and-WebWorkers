@@ -22,6 +22,7 @@
     "@no-modules/sample-wasm": "workspace:*",
     "sample-wasm": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
     "@testing-library/jest-dom": "*",
     "@types/node": "*",
     "@types/react": "*",

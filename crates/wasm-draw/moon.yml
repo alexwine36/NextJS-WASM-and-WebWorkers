@@ -1,0 +1,13 @@
+type: "library"
+
+tags: ['rust-wasm']
+
+# Add command `trunk serve --open`
+
+tasks:
+  test:
+    command: 'nextest run'
+    deps: []
+    options: 
+      mergeDeps: replace
+      mergeArgs: replace

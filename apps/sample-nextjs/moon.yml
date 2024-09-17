@@ -4,6 +4,7 @@ tags: ['node']
 dependsOn:
   - sample-wasm
   - web-worker
+  - wasm-draw
 
 fileGroups:
   app:

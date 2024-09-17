@@ -1,0 +1,22 @@
+type: "library"
+
+tags: ['rust-base']
+
+tasks:
+  dev-serve:
+    command: 'trunk serve --open'
+    inputs:
+      - 'src/**/*'
+      - 'static/**/*'
+      - 'Cargo.toml'
+      - 'trunk.toml'
+    env:
+      TRUNK_TERM_COLOR: 'always'
+      TRUNK_LOG: 'info'
+      TRUNK_DEBUG: 'false'
+      TRUNK_WATCH: 'true'
+      TRUNK_PUBLIC_URL: '/'
+      TRUNK_STATIC: 'static'
+      TRUNK_DIST: 'dist'
+      TRUNK_PORT: '8080'
+    local: true
