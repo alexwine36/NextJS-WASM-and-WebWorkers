@@ -25,7 +25,7 @@
     "@types/node": "^20.12.12",
     "@vitejs/plugin-react": "^4.3.1",
     "babel-preset-moon": "^3.0.2",
-    "eslint": "^8",
+    "eslint": "8.46.0",
     "eslint-config-moon": "^3.1.1",
     "eslint-config-next": "14.2.5",
     "eslint-plugin-react": "^7.35.0",

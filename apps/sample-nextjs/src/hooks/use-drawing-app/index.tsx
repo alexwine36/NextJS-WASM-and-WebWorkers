@@ -55,7 +55,7 @@ export const useDrawingApp = (canvasRef: RefObject<HTMLCanvasElement>) => {
 	};
 
 	const tools = useMemo(() => {
-		return Object.entries(TOOLS).map(([tool, { name, value }]) => ({
+		return Object.entries(TOOLS).map(([_, { name, value }]) => ({
 			name,
 			onClick: () => setTool(value),
 			active: activeTool === value,

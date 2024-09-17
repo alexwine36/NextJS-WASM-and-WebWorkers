@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { UseDrawingAppReturn } from '../../../hooks/use-drawing-app';
 import styles from './index.module.css';
 
@@ -13,17 +14,21 @@ export const Toolbar = (props: ToolbarProps) => {
 	return (
 		<div className={styles.toolbar}>
 			<div className={styles.dropdown}>
-				<button className={styles.dropbtn}>Tools</button>
+				<button className={styles.dropbtn} type="button">
+					Tools
+				</button>
 				<menu className={styles.dropdownContent}>
 					{tools.map(({ name, onClick, active }) => (
-						<li key={name} onClick={onClick} className={active ? styles.active : ''}>
+						<li className={active ? styles.active : ''} key={name} onClick={onClick}>
 							{name}
 						</li>
 					))}
 				</menu>
 			</div>
 			<div className={styles.dropdown}>
-				<button className={styles.dropbtn}>Colors</button>
+				<button className={styles.dropbtn} type="button">
+					Colors
+				</button>
 				<menu className={styles.dropdownContent}>
 					{colors.map((color) => (
 						<li
@@ -41,10 +46,12 @@ export const Toolbar = (props: ToolbarProps) => {
 				</menu>
 			</div>
 			<div className={styles.dropdown}>
-				<button className={styles.dropbtn}>Pen Sizes</button>
+				<button className={styles.dropbtn} type="button">
+					Pen Sizes
+				</button>
 				<menu className={styles.dropdownContent}>
 					{penSizes.map(({ size, onClick, active }) => (
-						<li key={size} onClick={onClick} className={active ? styles.active : ''}>
+						<li className={active ? styles.active : ''} key={size} onClick={onClick}>
 							{size}
 						</li>
 					))}

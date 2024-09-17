@@ -1,16 +1,13 @@
-
-
 .layout {
-    /* margin: 25px; */
-    width: 100vw;
-    height: 100vh;
-
+	/* margin: 25px; */
+	width: 100vw;
+	height: 100vh;
 }
 
 .wrapper {
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
 }

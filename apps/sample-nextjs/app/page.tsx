@@ -11,7 +11,7 @@ const OptionGrid = dynamic(
 	},
 );
 
-export default async function Home() {
+export const Home = () => {
 	// const data = await getFibonacci(12);
 	// const serverData = await fetch('http://localhost:3001/api').then((res) => res.json());
 
@@ -28,4 +28,6 @@ export default async function Home() {
 			</main>
 		</Providers>
 	);
-}
+};
+
+export default Home;

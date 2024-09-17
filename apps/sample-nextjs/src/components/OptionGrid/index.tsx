@@ -9,15 +9,13 @@ export const OptionGrid = () => {
 
 	const [optionsAtoms] = useAtom(optionsAtomsAtom);
 	return (
-		<>
-			<div>
-				<button onClick={handleRunAll}>Run All</button>
-				<div className={styles.grid}>
-					{optionsAtoms.map((option, index) => (
-						<RunnableComparisonCard key={index} atom={option} />
-					))}
-				</div>
+		<div>
+			<button onClick={handleRunAll}>Run All</button>
+			<div className={styles.grid}>
+				{optionsAtoms.map((option, index) => (
+					<RunnableComparisonCard atom={option} key={index} />
+				))}
 			</div>
-		</>
+		</div>
 	);
 };

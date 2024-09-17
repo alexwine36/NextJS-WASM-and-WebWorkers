@@ -88,5 +88,5 @@ export const GameOfLife = () => {
 		}
 	}, [display]);
 
-	return <canvas ref={display} id="game-of-life-canvas"></canvas>;
+	return <canvas id="game-of-life-canvas" ref={display} />;
 };
