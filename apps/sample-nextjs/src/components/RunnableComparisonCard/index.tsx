@@ -2,6 +2,7 @@ import { PrimitiveAtom, useAtom, useAtomValue } from 'jotai';
 import { ComparisonOptionAtom, inputAtom, microtaskQueueAtom } from '../../state/atoms';
 import { formatNumber } from '../../utils/format-number';
 import { timeFunction } from '../../utils/time-func';
+import { Button } from '../Button';
 import { ComparisonCard } from '../ComparisonCard';
 
 type RunnableComparisonCardProps = {
@@ -53,8 +54,8 @@ export const RunnableComparisonCard = ({ atom }: RunnableComparisonCardProps) =>
 	};
 
 	return (
-		<ComparisonCard title={title} description={description} danger={mainThread}>
-			<button
+		<ComparisonCard danger={mainThread} description={description} title={title}>
+			<Button
 				disabled={running}
 				onClick={async () => {
 					await handleRun();
@@ -62,7 +63,7 @@ export const RunnableComparisonCard = ({ atom }: RunnableComparisonCardProps) =>
 			>
 				Run
 				{/* Run {mainThread ? 'Main Thread' : 'Web Worker'} */}
-			</button>
+			</Button>
 			<div>
 				<p>Duration: {formatNumber(duration)}ms</p>
 				<p>Result: {formatNumber(result)}</p>
