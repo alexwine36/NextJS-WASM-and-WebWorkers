@@ -1,7 +1,7 @@
 .main {
 	display: flex;
 	flex-direction: column;
-	
+
 	height: 100vh;
 	width: 100vw;
 }
@@ -225,7 +225,6 @@
 		transform: rotate(0deg);
 	}
 }
-
 
 .wrapper {
 	padding: 1em;

@@ -1,7 +1,5 @@
-
-
 .button {
-    background-color: #f1f1f1;
+	background-color: #f1f1f1;
 	color: black;
 	padding: 0.5em;
 	font-size: 16px;
@@ -11,13 +9,13 @@
 	/* height: 100%; */
 	/* display: flex; */
 	/* align-items: center; */
-    transition: all 0.3s;
+	transition: all 0.3s;
 }
 
 .button:disabled {
-    opacity: 0.5;
+	opacity: 0.5;
 }
 
 .button:hover {
-    box-shadow: 1px 3px 8px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 1px 3px 8px 0 rgba(0, 0, 0, 0.2);
 }
