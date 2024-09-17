@@ -8,7 +8,7 @@ const DrawingApp = dynamic(
 	},
 );
 
-export const Draw = () => {
+export default async function Draw() {
 	return (
 		<div className={styles.layout}>
 			<div className={styles.wrapper}>
@@ -18,6 +18,4 @@ export const Draw = () => {
 			</div>
 		</div>
 	);
-};
-
-export default Draw;
+}

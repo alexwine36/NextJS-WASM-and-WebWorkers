@@ -24,6 +24,6 @@ module.exports = {
 		'jsx-a11y/iframe-has-title': 'off',
 
 		'react/react-in-jsx-scope': 'off',
-		'react/function-component-definition': ['error', { namedComponents: 'arrow-function' }],
+		'react/function-component-definition': 'off',
 	},
 };
