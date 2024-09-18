@@ -6,11 +6,19 @@ import { Toolbar } from './Toolbar';
 export const DrawingApp = () => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 
-	const { tools, colors, penSizes } = useDrawingApp(canvasRef);
+	const { tools, colors, penSizes, undo, redo, canUndo, canRedo } = useDrawingApp(canvasRef);
 
 	return (
 		<>
-			<Toolbar colors={colors} penSizes={penSizes} tools={tools} />
+			<Toolbar
+				canRedo={canRedo}
+				canUndo={canUndo}
+				colors={colors}
+				penSizes={penSizes}
+				redo={redo}
+				tools={tools}
+				undo={undo}
+			/>
 			<div
 				style={{
 					width: '100%',

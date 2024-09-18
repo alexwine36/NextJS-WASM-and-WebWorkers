@@ -36,7 +36,9 @@ tasks:
     command: 'next dev --port 3001'
     local: true
     deps:
+      - 'wasm-draw:build'
       - '^:build'
+
 
   start:
     command: 'next start'
