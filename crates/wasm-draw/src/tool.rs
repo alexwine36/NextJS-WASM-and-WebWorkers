@@ -1,9 +1,7 @@
 use std::f64::consts::PI;
 
-use crate::log;
 use crate::state::get_element_dimensions;
 use serde::{Deserialize, Serialize};
-use utilities::console_log;
 use wasm_bindgen::prelude::*;
 use web_sys::{CanvasRenderingContext2d, ImageData};
 
@@ -167,12 +165,7 @@ impl Measurement {
                 let radius = ((last_point.x - first_point.x).powi(2)
                     + (last_point.y - first_point.y).powi(2))
                 .sqrt();
-                console_log!(
-                    "first_point: {:?}, last_point: {:?}, radius: {:?}",
-                    first_point,
-                    last_point,
-                    radius
-                );
+
                 context
                     .arc(first_point.x, first_point.y, radius, 0.0, PI * 2.0)
                     .unwrap();

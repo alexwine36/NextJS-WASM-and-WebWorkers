@@ -39,7 +39,6 @@ tasks:
       - 'wasm-draw:build'
       - '^:build'
 
-
   start:
     command: 'next start'
     local: true

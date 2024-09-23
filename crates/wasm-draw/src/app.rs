@@ -8,7 +8,6 @@ use std::cell::RefCell;
 use std::rc::Rc;
 use utilities::console_log;
 use wasm_bindgen::prelude::*;
-use web_sys::console;
 use web_sys::ResizeObserver;
 use web_sys::{CanvasRenderingContext2d, HtmlCanvasElement, MouseEvent};
 

@@ -20,14 +20,13 @@
 	box-shadow: 1px 3px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-
 .btnGroup button.active {
 	/* border-width: 1px;
 	border-style: solid;
 	border-color: black; */
 	box-shadow: inset 0 0 0 2px black;
 }
-	
+
 .btnGroup {
 	display: flex;
 	justify-content: center;
@@ -47,43 +46,37 @@
 	border-radius: 0;
 	transition: all 0.2s ease;
 	/* transition: border-width 0.1s; */
-	
-
-  }
-  
+}
 
 .btnGroup button:first-child {
 	border-radius: var(--button-radius) 0 0 var(--button-radius);
-  }
-  .btnGroup button:last-child {
-	border-radius: 0 var(--button-radius) var(--button-radius) 0;
-  
 }
-  .btnGroup button:last-child {
+.btnGroup button:last-child {
+	border-radius: 0 var(--button-radius) var(--button-radius) 0;
+}
+.btnGroup button:last-child {
 	border-right: none; /* Prevent double borders */
-  }
-  
+}
 
-  /* Clear floats (clearfix hack) */
-  .btnGroup:after {
-	content: "";
+/* Clear floats (clearfix hack) */
+.btnGroup:after {
+	content: '';
 	clear: both;
 	display: table;
-  }
-  
-  /* Add a background color on hover */
-  .btnGroup button:hover {
+}
+
+/* Add a background color on hover */
+.btnGroup button:hover {
 	/* background-color: #3e8e41; */
 	opacity: 0.5;
-  }
+}
 
-  .iconButton {
+.iconButton {
 	color: gray;
 	padding: 0.25em;
-  }
+}
 
-  .iconButton:disabled {
+.iconButton:disabled {
 	/* opacity: 0.75; */
 	color: lightgray;
-  }
-
+}
