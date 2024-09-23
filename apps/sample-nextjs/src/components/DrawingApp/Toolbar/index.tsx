@@ -82,13 +82,11 @@ export const Toolbar = (props: ToolbarProps) => {
 			<ButtonGroup
 				style={{
 					fontSize: 20,
-					// color: 'gray',
 				}}
 			>
 				<IconButton
 					Icon={FaUndo}
 					disabled={!canUndo}
-					// iconProps={{ color: 'gray' }}
 					onClick={() => {
 						undo();
 					}}
@@ -96,7 +94,6 @@ export const Toolbar = (props: ToolbarProps) => {
 				<IconButton
 					Icon={FaRedo}
 					disabled={!canRedo}
-					// iconProps={{ color: 'gray' }}
 					onClick={() => {
 						redo();
 					}}

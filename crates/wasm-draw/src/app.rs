@@ -33,8 +33,11 @@ impl App {
 
         settings.add_color("something", "#aa00bb");
         let state: Rc<RefCell<State>> = Rc::new(RefCell::new(State::new(&canvas, settings)));
+        let context_attributes = web_sys::ContextAttributes2d::new();
+        context_attributes.set_will_read_frequently(true);
+
         let context = canvas
-            .get_context("2d")
+            .get_context_with_context_options("2d", &context_attributes)
             .unwrap()
             .unwrap()
             .dyn_into::<CanvasRenderingContext2d>()
@@ -87,16 +90,15 @@ impl App {
 
     pub fn undo_measurement(&mut self) {
         let mut measurements = self.measurements.borrow_mut();
-        console_log!("undo, measurements: {:?}", measurements);
+
         if let Some(measurement) = measurements.pop() {
-            console_log!("undo, measurements: {:?}", measurements);
             self.redo_list.borrow_mut().push(measurement);
         }
     }
 
     pub fn can_undo(&self) -> bool {
         let undo = self.measurements.borrow().len() > 0;
-        console_log!("can_undo: {:?}", undo);
+
         undo
     }
 
