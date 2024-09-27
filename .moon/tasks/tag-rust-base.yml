@@ -13,7 +13,7 @@ fileGroups:
     - 'crates/*/Cargo.toml'
 
     - '/rust-toolchain.toml'
-  sources: []
+  sources: ['**/*.rs']
   tests:
     - 'benches/**/*'
     - 'tests/**/*'

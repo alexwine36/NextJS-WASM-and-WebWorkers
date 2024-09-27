@@ -73,7 +73,7 @@ fn main() {
     app.set_active_tool(ToolType::Rectangle);
     let state = app.get_dimensions();
 
-    for _ in 0..100 {
+    for _ in 0..1 {
         let measurement = app.start_drawing();
         for _ in 0..5 {
             let x = rand::thread_rng().gen_range(0.0..state.width.into());
@@ -85,5 +85,5 @@ fn main() {
 
     app.run();
     app.draw();
-    app.set_active_tool(ToolType::Fill);
+    app.set_active_tool(ToolType::Circle);
 }

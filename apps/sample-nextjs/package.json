@@ -8,26 +8,28 @@
     "start": "next start --port 3005"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "jotai": "^2.9.3",
     "next": "14.2.5",
     "numbro": "^2.5.0",
     "react": "*",
     "react-dom": "*",
+    "react-icons": "^5.3.0",
     "sample-wasm": "workspace:*",
-    "wasm-draw": "workspace:*",
     "server-only": "^0.0.1",
+    "wasm-draw": "workspace:*",
     "web-worker": "workspace:*"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "*",
     "@repo/eslint-config": "workspace:*",
+    "@testing-library/jest-dom": "*",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@vitejs/plugin-react": "*",
+    "eslint": "*",
     "typescript": "^5",
     "vite-plugin-wasm": "^3.3.0",
-    "vitest": "*",
-    "eslint": "*"
+    "vitest": "*"
   }
 }

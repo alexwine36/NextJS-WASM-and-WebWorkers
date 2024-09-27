@@ -1,11 +1,12 @@
+use crate::log;
 use crate::settings;
 use crate::state::get_element_dimensions;
 use crate::state::Dimensions;
 use crate::state::State;
 use crate::tool::ToolType;
-
 use std::cell::RefCell;
 use std::rc::Rc;
+use utilities::console_log;
 use wasm_bindgen::prelude::*;
 use web_sys::ResizeObserver;
 use web_sys::{CanvasRenderingContext2d, HtmlCanvasElement, MouseEvent};
@@ -19,6 +20,8 @@ pub struct App {
     context: CanvasRenderingContext2d,
     state: Rc<RefCell<State>>,
     measurements: Rc<RefCell<Vec<Rc<RefCell<Measurement>>>>>,
+    redo_list: Rc<RefCell<Vec<Rc<RefCell<Measurement>>>>>,
+    measurement_callback: Option<js_sys::Function>,
 }
 
 #[wasm_bindgen]
@@ -29,8 +32,11 @@ impl App {
 
         settings.add_color("something", "#aa00bb");
         let state: Rc<RefCell<State>> = Rc::new(RefCell::new(State::new(&canvas, settings)));
+        let context_attributes = web_sys::ContextAttributes2d::new();
+        context_attributes.set_will_read_frequently(true);
+
         let context = canvas
-            .get_context("2d")
+            .get_context_with_context_options("2d", &context_attributes)
             .unwrap()
             .unwrap()
             .dyn_into::<CanvasRenderingContext2d>()
@@ -42,6 +48,22 @@ impl App {
             context,
             state,
             measurements: Rc::new(RefCell::new(Vec::new())),
+            redo_list: Rc::new(RefCell::new(Vec::new())),
+            measurement_callback: None,
+        }
+    }
+
+    pub fn set_measurement_callback(&mut self, callback: js_sys::Function) {
+        console_log!("setting callback");
+        self.measurement_callback = Some(callback);
+    }
+
+    pub fn run_measurement_callback(&self) {
+        console_log!("running callback");
+        if let Some(callback) = self.measurement_callback.as_ref() {
+            callback
+                .call1(&JsValue::NULL, &JsValue::NULL)
+                .unwrap_or(JsValue::NULL);
         }
     }
 
@@ -63,6 +85,31 @@ impl App {
 
     pub fn get_active_tool(&self) -> ToolType {
         self.state.borrow().get_tool()
+    }
+
+    pub fn undo_measurement(&mut self) {
+        let mut measurements = self.measurements.borrow_mut();
+
+        if let Some(measurement) = measurements.pop() {
+            self.redo_list.borrow_mut().push(measurement);
+        }
+    }
+
+    pub fn can_undo(&self) -> bool {
+        let undo = self.measurements.borrow().len() > 0;
+
+        undo
+    }
+
+    pub fn redo_measurement(&self) {
+        let mut redo_list = self.redo_list.borrow_mut();
+        if let Some(measurement) = redo_list.pop() {
+            self.measurements.borrow_mut().push(measurement);
+        }
+    }
+
+    pub fn can_redo(&self) -> bool {
+        self.redo_list.borrow().len() > 0
     }
 
     pub fn set_active_tool(&self, tool: ToolType) {
@@ -199,6 +246,8 @@ impl App {
                 let m = measurement.borrow().clone();
                 if let Some(measure) = m {
                     measure.borrow_mut().add_point(new_x, new_y);
+                    self_copy.run_measurement_callback();
+
                     measure.borrow_mut().finish()
                 }
                 self_copy.draw();

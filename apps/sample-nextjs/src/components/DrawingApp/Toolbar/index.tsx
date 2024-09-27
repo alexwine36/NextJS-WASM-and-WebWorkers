@@ -1,35 +1,46 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import { FaRedo, FaUndo } from 'react-icons/fa';
 import { UseDrawingAppReturn } from '../../../hooks/use-drawing-app';
+import { Button, ButtonGroup, IconButton } from '../../Button';
 import styles from './index.module.css';
 
 type ToolbarProps = {
 	tools: UseDrawingAppReturn['tools'];
 	colors: UseDrawingAppReturn['colors'];
 	penSizes: UseDrawingAppReturn['penSizes'];
+	undo: UseDrawingAppReturn['undo'];
+	redo: UseDrawingAppReturn['redo'];
+	canUndo: UseDrawingAppReturn['canUndo'];
+	canRedo: UseDrawingAppReturn['canRedo'];
 };
 
 export const Toolbar = (props: ToolbarProps) => {
-	const { tools, colors, penSizes } = props;
+	const { tools, colors, penSizes, undo, redo, canRedo, canUndo } = props;
 
-	const activeTool = tools.find((tool) => tool.active);
 	const activeColor = colors.find((color) => color.active);
 	const activePenSize = penSizes.find((penSize) => penSize.active);
 	return (
 		<div className={styles.toolbar}>
+			<ButtonGroup
+				style={{
+					fontSize: 24,
+				}}
+			>
+				{tools.map(({ name, onClick, active, icon }) => (
+					<IconButton
+						Icon={icon}
+						iconProps={{ color: active ? 'black' : 'gray' }}
+						isActive={active}
+						key={name}
+						onClick={onClick}
+					>
+						{name}
+					</IconButton>
+				))}
+			</ButtonGroup>
+
 			<div className={styles.dropdown}>
-				<button className={styles.dropbtn} type="button">
-					Tools <b>({activeTool?.name})</b>
-				</button>
-				<menu className={styles.dropdownContent}>
-					{tools.map(({ name, onClick, active }) => (
-						<li className={active ? styles.active : ''} key={name} onClick={onClick}>
-							{name}
-						</li>
-					))}
-				</menu>
-			</div>
-			<div className={styles.dropdown}>
-				<button className={styles.dropbtn} type="button">
+				<Button className={styles.dropbtn} type="button">
 					Colors
 					<b
 						style={{
@@ -39,7 +50,7 @@ export const Toolbar = (props: ToolbarProps) => {
 							display: 'inline-block',
 						}}
 					/>
-				</button>
+				</Button>
 				<menu className={styles.dropdownContent}>
 					{colors.map((color) => (
 						<li
@@ -57,9 +68,9 @@ export const Toolbar = (props: ToolbarProps) => {
 				</menu>
 			</div>
 			<div className={styles.dropdown}>
-				<button className={styles.dropbtn} type="button">
+				<Button className={styles.dropbtn} type="button">
 					Pen Sizes <b>({activePenSize?.size})</b>
-				</button>
+				</Button>
 				<menu className={styles.dropdownContent}>
 					{penSizes.map(({ size, onClick, active }) => (
 						<li className={active ? styles.active : ''} key={size} onClick={onClick}>
@@ -68,6 +79,26 @@ export const Toolbar = (props: ToolbarProps) => {
 					))}
 				</menu>
 			</div>
+			<ButtonGroup
+				style={{
+					fontSize: 20,
+				}}
+			>
+				<IconButton
+					Icon={FaUndo}
+					disabled={!canUndo}
+					onClick={() => {
+						undo();
+					}}
+				/>
+				<IconButton
+					Icon={FaRedo}
+					disabled={!canRedo}
+					onClick={() => {
+						redo();
+					}}
+				/>
+			</ButtonGroup>
 		</div>
 	);
 };

@@ -3,7 +3,6 @@ use std::f64::consts::PI;
 use crate::state::get_element_dimensions;
 use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
-
 use web_sys::{CanvasRenderingContext2d, ImageData};
 
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
@@ -12,7 +11,8 @@ pub enum ToolType {
     Pen,
     Line,
     Rectangle,
-    Fill, // Circle,
+    Circle,
+    Fill,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -157,6 +157,18 @@ impl Measurement {
                     last_point.x - first_point.x,
                     last_point.y - first_point.y,
                 );
+            }
+            ToolType::Circle => {
+                context.begin_path();
+                let last_point = self.points.last().unwrap();
+                let first_point = self.points.first().unwrap();
+                let radius = ((last_point.x - first_point.x).powi(2)
+                    + (last_point.y - first_point.y).powi(2))
+                .sqrt();
+
+                context
+                    .arc(first_point.x, first_point.y, radius, 0.0, PI * 2.0)
+                    .unwrap();
             }
             ToolType::Fill => {
                 if self.processed {
